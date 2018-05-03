@@ -28,45 +28,54 @@ namespace AHK_Builder_Plus_Plus
             if (result != DialogResult.OK)
                 return result;
 
-            using (var ahkFile = new StreamWriter(ahkFileLocation.FileName, false))
+            try
             {
-                // Top part of the file.
-                ahkFile.WriteLine("#Persistent");
-                ahkFile.WriteLine("Active := False");
+                using (var ahkFile = new StreamWriter(ahkFileLocation.FileName, false))
+                {
+                    // Top part of the file.
+                    ahkFile.WriteLine("#Persistent");
+                    ahkFile.WriteLine("Active := False");
 
-                if (ahkToggleKeyBox.Text == "ScrollLock")
-                    ahkFile.WriteLine("SetScrollLockState, AlwaysOff");
-                
-                if (ahkToggleKeyBox.Text == "CapsLock")
-                    ahkFile.WriteLine("SetScrollLockState, AlwaysOff");
+                    if (ahkToggleKeyBox.Text == "ScrollLock")
+                        ahkFile.WriteLine("SetScrollLockState, AlwaysOff");
 
-                ahkFile.WriteLine("");
-                ahkFile.WriteLine($"{ahkToggleKeyBox.Text}::");
-                ahkFile.WriteLine("	SetTimer, Rotation, % (Toggle:=!Toggle) ? 32 : \"Off\"");
-                ahkFile.WriteLine("	Active := !Active");
-                ahkFile.WriteLine("");
-                ahkFile.WriteLine("	if (Active) {");
-                ahkFile.WriteLine($"		TrayTip, {classBox.SelectedItem.ToString()}, Rotation activated, 5, 17");
-                ahkFile.WriteLine("	} else {");
-                ahkFile.WriteLine($"		TrayTip, {classBox.SelectedItem.ToString()}, Rotation deactivated, 5, 17");
-                ahkFile.WriteLine("	}");
-                ahkFile.WriteLine("return");
-                ahkFile.WriteLine("");
-                ahkFile.WriteLine("Rotation:");
-                ahkFile.WriteLine("	WinWaitActive, World of Warcraft,");
+                    if (ahkToggleKeyBox.Text == "CapsLock")
+                        ahkFile.WriteLine("SetScrollLockState, AlwaysOff");
 
-                // Get pixel locations.
-                var pixelfinder = new Programs.PixelFinder(xCoordinateBox.Text, yCoordinateBox.Text, ovaleScaleBox.Text);
-                ahkFile.WriteLine($"	PixelGetColor, CLRa, {xCoordinateBox.Text}, {yCoordinateBox.Text}");
-                ahkFile.WriteLine($"	PixelGetColor, CLRb, {pixelfinder.xCoordinateAlt}, {pixelfinder.yCoordinateAlt}");
+                    ahkFile.WriteLine("");
+                    ahkFile.WriteLine($"{ahkToggleKeyBox.Text}::");
+                    ahkFile.WriteLine("	SetTimer, Rotation, % (Toggle:=!Toggle) ? 32 : \"Off\"");
+                    ahkFile.WriteLine("	Active := !Active");
+                    ahkFile.WriteLine("");
+                    ahkFile.WriteLine("	if (Active) {");
+                    ahkFile.WriteLine($"		TrayTip, {classBox.SelectedItem.ToString()}, Rotation activated, 5, 17");
+                    ahkFile.WriteLine("	} else {");
+                    ahkFile.WriteLine($"		TrayTip, {classBox.SelectedItem.ToString()}, Rotation deactivated, 5, 17");
+                    ahkFile.WriteLine("	}");
+                    ahkFile.WriteLine("return");
+                    ahkFile.WriteLine("");
+                    ahkFile.WriteLine("Rotation:");
+                    ahkFile.WriteLine("	WinWaitActive, World of Warcraft,");
 
-                // Generate if chain of doom.
-                var strings = GenerateAhkColorCheck();
-                foreach (var line in strings)
-                    ahkFile.WriteLine(line);
+                    // Get pixel locations.
+                    var pixelfinder = new Programs.PixelFinder(xCoordinateBox.Text, yCoordinateBox.Text, ovaleScaleBox.Text);
+                    ahkFile.WriteLine($"	PixelGetColor, CLRa, {xCoordinateBox.Text}, {yCoordinateBox.Text}");
+                    ahkFile.WriteLine($"	PixelGetColor, CLRb, {pixelfinder.xCoordinateAlt}, {pixelfinder.yCoordinateAlt}");
 
-                ahkFile.WriteLine("	}");
-                ahkFile.WriteLine("return");
+                    // Generate if chain of doom.
+                    var strings = GenerateAhkColorCheck();
+                    foreach (var line in strings)
+                        ahkFile.WriteLine(line);
+
+                    ahkFile.WriteLine("	}");
+                    ahkFile.WriteLine("return");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error while generating the AHK.", "Error.");
+                MessageBox.Show(ex.Message, "Error.");
+                return DialogResult.Abort;
             }
 
             return result;

@@ -19,14 +19,24 @@ namespace AHK_Builder_Plus_Plus
             if (string.IsNullOrEmpty(Properties.Settings.Default.wowLocation) || (!File.Exists(Path.Combine(Properties.Settings.Default.wowLocation, @"Wow.exe"))))
                 InitSettings();
 
+            // Load settings.
             LoadSettings();
             LoadClassList();
+
+            // Load previous session (if exists)
+            var xml = new XmlFunctions(ahkDataSet);
+            xml.Load();
+
+            // Move form to front.
             Activate();
         }
 
         private void AhkBuilderPlusPlus_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveSettings();
+
+            var xml = new XmlFunctions(ahkDataSet);
+            xml.ClearBackup();
         }
 
         private void CoordinateBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -105,10 +115,20 @@ namespace AHK_Builder_Plus_Plus
             {
                 // Add to table.
                 ahkDataTable.Rows.Add(new Object[] { spellBox.SelectedItem.ToString(), bindingBox.Text, pixelFinder.pixelColors.Color1, pixelFinder.pixelColors.Color2 });
+
+                // Make tmp save.
+                var xml = new XmlFunctions(ahkDataSet);
+                xml.Save();
             }
             catch (ConstraintException)
             {
-                MessageBox.Show("A keybinding with the same pixel color combination is already present in the table.", "Duplicate value.");
+                MessageBox.Show("A key binding with the same pixel color combination is already present in the table.", "Duplicate value.");
+                Activate();
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Can't add keybind because: {ex.Message}", "Error.");
                 Activate();
                 return;
             }
@@ -136,17 +156,16 @@ namespace AHK_Builder_Plus_Plus
             if (result != DialogResult.OK)
                 return;
 
-            try
-            {
-                ahkDataSet.Clear();
-                ahkDataSet.ReadXml(openXML.FileName);
-            }
-            catch { }
+            var xml = new XmlFunctions(ahkDataSet);
+            var loadResult = xml.Load(openXML.FileName);
 
-            MessageBox.Show("Rotation loaded.", "Import completed.");
+            if (loadResult)
+                MessageBox.Show("Rotation loaded.", "Import completed.");
+            else
+                MessageBox.Show("Could not load XML file.", "Import failed.");
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e)
         {
             if (ahkDataTable.Rows.Count == 0)
             {
@@ -164,13 +183,13 @@ namespace AHK_Builder_Plus_Plus
             if (result != DialogResult.OK)
                 return;
 
-            try
-            {
-                ahkDataSet.WriteXml(saveXML.FileName);
-            }
-            catch { }
+            var xml = new XmlFunctions(ahkDataSet);
+            var saveResult = xml.Save(saveXML.FileName);
 
-            MessageBox.Show("Rotation saved.", "Export completed.");
+            if (saveResult)
+                MessageBox.Show("Rotation saved.", "Export completed.");
+            else
+                MessageBox.Show("Could not save XML file.", "Export failed.");
         }
 
         private void generateAhkButton_Click(object sender, EventArgs e)

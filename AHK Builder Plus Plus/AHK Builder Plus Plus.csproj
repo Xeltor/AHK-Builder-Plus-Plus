@@ -54,6 +54,7 @@
     <Compile Include="AhkBuilderPlusPlus.Designer.cs">
       <DependentUpon>AhkBuilderPlusPlus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Functions\XmlFunctions.cs" />
     <Compile Include="Functions\FinishFunctions.cs">
       <SubType>Form</SubType>
     </Compile>
