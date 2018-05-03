@@ -1,6 +1,7 @@
 ﻿using AHK_Builder_Plus_Plus.Functions;
 using AHK_Builder_Plus_Plus.Programs;
 using System;
+using System.Data;
 using System.IO;
 using System.Windows.Forms;
 
@@ -100,9 +101,18 @@ namespace AHK_Builder_Plus_Plus
             var pixelFinder = new PixelFinder(xCoordinateBox.Text, yCoordinateBox.Text, ovaleScaleBox.Text);
             pixelFinder.Run();
 
-            // Add to table.
-            ahkDataTable.Rows.Add(new Object[] { spellBox.SelectedItem.ToString(), bindingBox.Text, pixelFinder.pixelColors.Color1, pixelFinder.pixelColors.Color2 });
-
+            try
+            {
+                // Add to table.
+                ahkDataTable.Rows.Add(new Object[] { spellBox.SelectedItem.ToString(), bindingBox.Text, pixelFinder.pixelColors.Color1, pixelFinder.pixelColors.Color2 });
+            }
+            catch (ConstraintException)
+            {
+                MessageBox.Show("A keybinding with the same pixel color combination is already present in the table.", "Duplicate value.");
+                Activate();
+                return;
+            }
+            
             // Clear current keybind.
             bindingBox.Clear();
 
@@ -111,7 +121,7 @@ namespace AHK_Builder_Plus_Plus
 
             // Activate main form again.
             Activate();
-        }
+            }
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
