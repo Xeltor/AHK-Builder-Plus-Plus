@@ -10,8 +10,14 @@ namespace AHK_Builder_Plus_Plus
 {
     public partial class AhkBuilderPlusPlus : Form
     {
-        public void GenerateAHK()
+        public DialogResult GenerateAHK()
         {
+            if (ahkDataTable.Rows.Count == 0)
+            {
+                MessageBox.Show("Please add keybinds before generating an AHK file.", "Error");
+                return DialogResult.Cancel;
+            }
+
             var ahkFileLocation = new SaveFileDialog();
             ahkFileLocation.Filter = "AHK Files|*.ahk";
             ahkFileLocation.RestoreDirectory = true;
@@ -20,7 +26,7 @@ namespace AHK_Builder_Plus_Plus
             var result = ahkFileLocation.ShowDialog();
 
             if (result != DialogResult.OK)
-                return;
+                return result;
 
             using (var ahkFile = new StreamWriter(ahkFileLocation.FileName, false))
             {
@@ -62,6 +68,8 @@ namespace AHK_Builder_Plus_Plus
                 ahkFile.WriteLine("	}");
                 ahkFile.WriteLine("return");
             }
+
+            return result;
         }
 
         private string[] GenerateAhkColorCheck()

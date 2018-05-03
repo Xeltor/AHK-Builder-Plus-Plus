@@ -138,6 +138,12 @@ namespace AHK_Builder_Plus_Plus
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            if (ahkDataTable.Rows.Count == 0)
+            {
+                MessageBox.Show("Nothing to save.", "Error");
+                return;
+            }
+
             var saveXML = new SaveFileDialog();
             saveXML.Filter = "XML Files|*.xml";
             saveXML.RestoreDirectory = true;
@@ -159,9 +165,10 @@ namespace AHK_Builder_Plus_Plus
 
         private void generateAhkButton_Click(object sender, EventArgs e)
         {
-            GenerateAHK();
+            var result = GenerateAHK();
 
-            MessageBox.Show("Rotation saved as AHK.", "AHK created.");
+            if (result == DialogResult.OK)
+                MessageBox.Show("Rotation saved as AHK.", "AHK created.");
         }
     }
 }
