@@ -37,45 +37,64 @@ namespace AHK_Builder_Plus_Plus.Functions
                 if (Braceless)
                     key = cleanKey;
                 else
-                    key = @"{" + cleanKey + @"}";
-            }
-
-            // Tilde key.
-            else if (e.KeyCode == Keys.Oemtilde)
-            {
-                if (!e.Shift)
-                    key = @"`";
-                else
-                    key = @"~";
-            }
-
-            // Backslash
-            else if (e.KeyCode == Keys.OemBackslash)
-            {
-                key = @"\";
+                    key = "{" + cleanKey + "}";
             }
 
             // Caps lock
             else if (e.KeyCode == Keys.CapsLock && !CheckModifiers)
             {
                 if (Braceless)
-                    key = @"CapsLock";
+                    key = "CapsLock";
                 else
-                    key = @"{CapsLock}";
+                    key = "{CapsLock}";
             }
 
             // Scroll lock
             else if (e.KeyCode == Keys.Scroll && !CheckModifiers)
             {
                 if (Braceless)
-                    key = @"ScrollLock";
+                    key = "ScrollLock";
                 else
-                    key = @"{ScrollLock}";
+                    key = "{ScrollLock}";
             }
 
-            // Nothing found, return null.
+            // Other Oem keys.
             else
-                return null;
+                switch (e.KeyCode)
+                {
+                    case Keys.Oemplus:
+                        key = "=";
+                        break;
+                    case Keys.Subtract:
+                    case Keys.OemMinus:
+                        key = "-";
+                        break;
+                    case Keys.Oemtilde:
+                        key = "`";
+                        break;
+                    case Keys.OemBackslash:
+                        key = @"\";
+                        break;
+                    case Keys.Decimal:
+                    case Keys.OemPeriod:
+                        key = ".";
+                        break;
+                    case Keys.OemPipe:
+                        key = "|";
+                        break;
+                    case Keys.Oem2:
+                    case Keys.Divide:
+                        key = "/";
+                        break;
+                    case Keys.Multiply:
+                        key = "*";
+                        break;
+                    case Keys.Add:
+                        key = "+";
+                        break;
+                    default:
+                        return null;
+                }
             
             // Process modifiers.
             Modifiers mods = ProcessModifiers(e);
