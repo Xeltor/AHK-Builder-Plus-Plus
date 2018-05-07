@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AhkBuilderPlusPlus));
             this.finishBox = new System.Windows.Forms.GroupBox();
             this.generateAhkButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
@@ -125,7 +126,7 @@
             this.AhkTable.DataMember = "AhkData";
             this.AhkTable.DataSource = this.ahkDataSet;
             this.AhkTable.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AhkTable.Location = new System.Drawing.Point(0, 165);
+            this.AhkTable.Location = new System.Drawing.Point(0, 166);
             this.AhkTable.Name = "AhkTable";
             this.AhkTable.Size = new System.Drawing.Size(707, 410);
             this.AhkTable.TabIndex = 3;
@@ -398,11 +399,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 575);
+            this.ClientSize = new System.Drawing.Size(707, 576);
             this.Controls.Add(this.keybindBox);
             this.Controls.Add(this.settingBox);
             this.Controls.Add(this.AhkTable);
             this.Controls.Add(this.finishBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(723, 614);
             this.MinimumSize = new System.Drawing.Size(723, 614);
