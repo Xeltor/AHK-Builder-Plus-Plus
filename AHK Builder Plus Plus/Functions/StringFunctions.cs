@@ -26,7 +26,7 @@ namespace AHK_Builder_Plus_Plus.Functions
             if (!int.TryParse(s, out int XcoordOffset))
                 return 0;
 
-            return (Screen.PrimaryScreen.Bounds.Width / 2) + (XcoordOffset - 2);
+            return (Screen.PrimaryScreen.Bounds.Width / 2) + ((XcoordOffset - 3) - 2);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace AHK_Builder_Plus_Plus.Functions
             if (!int.TryParse(s, out int XcoordOffset))
                 return 0;
 
-            return (Screen.PrimaryScreen.Bounds.Width / 2) + XcoordOffset;
+            return (Screen.PrimaryScreen.Bounds.Width / 2) + (XcoordOffset - 3);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace AHK_Builder_Plus_Plus.Functions
 
             var additionalOffset = (main) ? -10 : 10;
 
-            return ((Screen.PrimaryScreen.Bounds.Height / 2) + (YcoordOffset * -1)) + (int)(additionalOffset * ovaleScale);
+            return ((Screen.PrimaryScreen.Bounds.Height / 2) + ((YcoordOffset * -1) + 3)) + (int)(additionalOffset * ovaleScale);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace AHK_Builder_Plus_Plus.Functions
             if (!int.TryParse(s, out int YcoordOffset))
                 return 0;
 
-            return (Screen.PrimaryScreen.Bounds.Height / 2) + (YcoordOffset * -1);
+            return (Screen.PrimaryScreen.Bounds.Height / 2) + ((YcoordOffset * -1) + 3);
         }
 
         /// <summary>
