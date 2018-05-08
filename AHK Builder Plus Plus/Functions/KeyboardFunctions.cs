@@ -1,5 +1,4 @@
 ﻿using AHK_Builder_Plus_Plus.Objects;
-using System;
 using System.Windows.Forms;
 
 namespace AHK_Builder_Plus_Plus.Functions

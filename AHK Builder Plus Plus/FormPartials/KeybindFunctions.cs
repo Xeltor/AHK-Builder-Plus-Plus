@@ -1,15 +1,10 @@
 ﻿using AHK_Builder_Plus_Plus.Functions;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace AHK_Builder_Plus_Plus
 {
-    public partial class AhkBuilderPlusPlus : Form
+    public partial class AhkBuilderPlusPlus
     {
         internal void LoadClassList()
         {

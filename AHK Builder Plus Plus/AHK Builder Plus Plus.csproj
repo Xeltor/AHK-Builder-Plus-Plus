@@ -77,14 +77,14 @@
       <DependentUpon>AhkBuilderPlusPlus.cs</DependentUpon>
     </Compile>
     <Compile Include="Functions\XmlFunctions.cs" />
-    <Compile Include="Functions\FinishFunctions.cs">
+    <Compile Include="FormPartials\FinishFunctions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Functions\KeybindFunctions.cs">
+    <Compile Include="FormPartials\KeybindFunctions.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Functions\KeyboardFunctions.cs" />
-    <Compile Include="Functions\SettingsFunctions.cs">
+    <Compile Include="FormPartials\SettingsFunctions.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Functions\StringFunctions.cs" />
