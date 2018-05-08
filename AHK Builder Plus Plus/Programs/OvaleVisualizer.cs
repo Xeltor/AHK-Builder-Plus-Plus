@@ -17,9 +17,9 @@ namespace AHK_Builder_Plus_Plus.Programs
             Visualizer.StartInfo.UseShellExecute = false;
         }
 
-        public void Run(int OvaleXCoordinate, int OvaleYCoordinate, int PixelMainXCoordinate, int PixelMainYCoordinate, int PixelAltXCoordinate, int PixelAltYCoordinate)
+        public void Run(int OvaleXCoordinate, int OvaleYCoordinate, int PixelMainXCoordinate, int PixelMainYCoordinate, int PixelAltXCoordinate, int PixelAltYCoordinate, int OffSet)
         {
-            Visualizer.StartInfo.Arguments = $"{OvaleXCoordinate} {OvaleYCoordinate} {PixelMainXCoordinate} {PixelMainYCoordinate} {PixelAltXCoordinate} {PixelAltYCoordinate}";
+            Visualizer.StartInfo.Arguments = $"{OvaleXCoordinate} {OvaleYCoordinate} {PixelMainXCoordinate} {PixelMainYCoordinate} {PixelAltXCoordinate} {PixelAltYCoordinate} {OffSet}";
             Visualizer.Start();
         }
 

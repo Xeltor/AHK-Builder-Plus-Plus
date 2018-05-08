@@ -150,6 +150,12 @@ namespace AHK_Builder_Plus_Plus
                 return;
             }
 
+            // Turn off visualizer if its still on.
+            var visualizer = new OvaleVisualizer();
+            if (visualizer.IsRunning())
+                visualizer.Kill();
+
+            // Run pixelfinder.
             var pixelFinder = new PixelFinder(FirstXCoordinate, FirstYCoordinate, SecondXCoordinate, SecondYCoordinate);
             pixelFinder.Run();
 
@@ -271,9 +277,15 @@ namespace AHK_Builder_Plus_Plus
             }
 
             var visualizer = new OvaleVisualizer();
+            
+            var config = new WoWConfig();
+            var offSet = 20;
+
+            if (config.IsUiScaleEnabled())
+                offSet = (int)(config.Scaler() * 20);
 
             if (!visualizer.IsRunning())
-                visualizer.Run(OvaleXCoordinate, OvaleYCoordinate, FirstXCoordinate, FirstYCoordinate, SecondXCoordinate, SecondYCoordinate);
+                visualizer.Run(OvaleXCoordinate, OvaleYCoordinate, FirstXCoordinate, FirstYCoordinate, SecondXCoordinate, SecondYCoordinate, offSet);
             else
                 visualizer.Kill();
         }

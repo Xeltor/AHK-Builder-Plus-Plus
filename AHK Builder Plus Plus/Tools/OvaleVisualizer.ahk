@@ -7,8 +7,9 @@ PixelLocationOneX = %3%
 PixelLocationOneY = %4%
 PixelLocationTwoX = %5%
 PixelLocationTwoY = %6%
-OvaleLeftX := OvaleMiddleX - 20
-OvaleUpY := OvaleMiddleY - 20
+OffSet = %7%
+OvaleLeftX := OvaleMiddleX - OffSet
+OvaleUpY := OvaleMiddleY - OffSet
 
 if (%0% < 6)
 {
@@ -17,19 +18,19 @@ if (%0% < 6)
 
 Gui, LineRight:+ToolWindow -Caption +AlwaysOnTop
 Gui, LineRight:Color, red
-Gui, LineRight:Show, x%OvaleMiddleX% y%OvaleMiddleY% w20 h1
+Gui, LineRight:Show, x%OvaleMiddleX% y%OvaleMiddleY% w%OffSet% h1
 
 Gui, LineDown:+ToolWindow -Caption +AlwaysOnTop
 Gui, LineDown:Color, red
-Gui, LineDown:Show, x%OvaleMiddleX% y%OvaleMiddleY% w1 h20
+Gui, LineDown:Show, x%OvaleMiddleX% y%OvaleMiddleY% w1 h%OffSet%
 
 Gui, LineLeft:+ToolWindow -Caption +AlwaysOnTop
 Gui, LineLeft:Color, red
-Gui, LineLeft:Show, x%OvaleLeftX% y%OvaleMiddleY% w20 h1
+Gui, LineLeft:Show, x%OvaleLeftX% y%OvaleMiddleY% w%OffSet% h1
 
 Gui, LineUp:+ToolWindow -Caption +AlwaysOnTop
 Gui, LineUp:Color, red
-Gui, LineUp:Show, x%OvaleMiddleX% y%OvaleUpY% w1 h20
+Gui, LineUp:Show, x%OvaleMiddleX% y%OvaleUpY% w1 h%OffSet%
 
 Gui, PxlLocOne:+ToolWindow -Caption +AlwaysOnTop
 Gui, PxlLocOne:Color, 0xFF007F

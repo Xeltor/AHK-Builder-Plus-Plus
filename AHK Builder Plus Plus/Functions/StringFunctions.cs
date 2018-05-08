@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace AHK_Builder_Plus_Plus.Functions
 {
@@ -26,6 +27,14 @@ namespace AHK_Builder_Plus_Plus.Functions
             if (!int.TryParse(s, out int XcoordOffset))
                 return 0;
 
+            // Correct for WoW UI scaling.
+            var config = new WoWConfig();
+            if (config.IsUiScaleEnabled())
+            {
+                var scaler = config.Scaler();
+                XcoordOffset = (int)(scaler * XcoordOffset);
+            }
+
             return (Screen.PrimaryScreen.Bounds.Width / 2) + ((XcoordOffset - 3) - 2);
         }
 
@@ -38,6 +47,14 @@ namespace AHK_Builder_Plus_Plus.Functions
         {
             if (!int.TryParse(s, out int XcoordOffset))
                 return 0;
+
+            // Correct for WoW UI scaling.
+            var config = new WoWConfig();
+            if (config.IsUiScaleEnabled())
+            {
+                var scaler = config.Scaler();
+                XcoordOffset = (int)(scaler * XcoordOffset);
+            }
 
             return (Screen.PrimaryScreen.Bounds.Width / 2) + (XcoordOffset - 3);
         }
@@ -55,7 +72,16 @@ namespace AHK_Builder_Plus_Plus.Functions
 
             var additionalOffset = (main) ? -10 : 10;
 
-            return ((Screen.PrimaryScreen.Bounds.Height / 2) + ((YcoordOffset * -1) + 3)) + (int)(additionalOffset * ovaleScale);
+            // Correct for WoW UI scaling.
+            var config = new WoWConfig();
+            if (config.IsUiScaleEnabled())
+            {
+                var scaler = config.Scaler();
+                additionalOffset = (int)(scaler * additionalOffset);
+                YcoordOffset = (int)(scaler * YcoordOffset);
+            }
+
+            return ((Screen.PrimaryScreen.Bounds.Height / 2) + ((YcoordOffset * -1) + 4)) + (int)(additionalOffset * ovaleScale);
         }
 
         /// <summary>
@@ -68,7 +94,15 @@ namespace AHK_Builder_Plus_Plus.Functions
             if (!int.TryParse(s, out int YcoordOffset))
                 return 0;
 
-            return (Screen.PrimaryScreen.Bounds.Height / 2) + ((YcoordOffset * -1) + 3);
+            // Correct for WoW UI scaling.
+            var config = new WoWConfig();
+            if (config.IsUiScaleEnabled())
+            {
+                var scaler = config.Scaler();
+                YcoordOffset = (int)(scaler * YcoordOffset);
+            }
+
+            return (Screen.PrimaryScreen.Bounds.Height / 2) + ((YcoordOffset * -1) + 4);
         }
 
         /// <summary>
