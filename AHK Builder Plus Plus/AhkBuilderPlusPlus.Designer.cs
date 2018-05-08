@@ -63,6 +63,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.classBox = new System.Windows.Forms.ComboBox();
             this.wowBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.visualizerButton = new System.Windows.Forms.Button();
             this.finishBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AhkTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ahkDataSet)).BeginInit();
@@ -302,6 +303,7 @@
             // 
             // keybindBox
             // 
+            this.keybindBox.Controls.Add(this.visualizerButton);
             this.keybindBox.Controls.Add(this.addButton);
             this.keybindBox.Controls.Add(this.bindingBox);
             this.keybindBox.Controls.Add(this.label7);
@@ -396,6 +398,17 @@
             this.wowBrowserDialog.Description = "Please select your World of Warcraft folder.";
             this.wowBrowserDialog.ShowNewFolderButton = false;
             // 
+            // visualizerButton
+            // 
+            this.visualizerButton.Location = new System.Drawing.Point(9, 118);
+            this.visualizerButton.Margin = new System.Windows.Forms.Padding(0);
+            this.visualizerButton.Name = "visualizerButton";
+            this.visualizerButton.Size = new System.Drawing.Size(21, 23);
+            this.visualizerButton.TabIndex = 7;
+            this.visualizerButton.Text = "V";
+            this.visualizerButton.UseVisualStyleBackColor = true;
+            this.visualizerButton.Click += new System.EventHandler(this.visualizerButton_Click);
+            // 
             // AhkBuilderPlusPlus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -461,6 +474,7 @@
         private System.Windows.Forms.TextBox bindingBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button visualizerButton;
     }
 }
 

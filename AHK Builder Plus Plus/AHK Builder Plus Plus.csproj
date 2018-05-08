@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="Functions\StringFunctions.cs" />
     <Compile Include="Objects\Modifiers.cs" />
+    <Compile Include="Programs\OvaleVisualizer.cs" />
     <Compile Include="Programs\PixelFinder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,6 +116,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Tools\auto_pixelfind.ahk" />
+    <None Include="Tools\OvaleVisualizer.ahk" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -122,6 +124,9 @@
   <ItemGroup>
     <Content Include="AutoHotkey.ico" />
     <Content Include="Tools\auto_pixelfind.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\OvaleVisualizer.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

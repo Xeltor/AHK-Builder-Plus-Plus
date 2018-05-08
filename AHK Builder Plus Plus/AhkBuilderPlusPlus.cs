@@ -229,5 +229,37 @@ namespace AHK_Builder_Plus_Plus
             if (result == DialogResult.OK)
                 MessageBox.Show("Rotation saved as AHK.", "AHK created.");
         }
+
+        private void visualizerButton_Click(object sender, EventArgs e)
+        {
+            // Check if scale box is set properly.
+            var scale = ovaleScaleBox.Text.ToDouble();
+            if (scale < 0.5 || scale > 3)
+            {
+                MessageBox.Show("Please set an Ovale Scale % between 50 and 300", "Ovale scale error");
+                return;
+            }
+
+            // Check if coordinates are good.
+            var OvaleXCoordinate = xOffsetBox.Text.ToOvaleX();
+            var OvaleYCoordinate = xOffsetBox.Text.ToOvaleY();
+            var FirstXCoordinate = xOffsetBox.Text.ToX();
+            var FirstYCoordinate = yOffsetBox.Text.ToY(scale);
+            var SecondXCoordinate = xOffsetBox.Text.ToX();
+            var SecondYCoordinate = yOffsetBox.Text.ToY(scale, false);
+            if (FirstXCoordinate <= 0 || FirstXCoordinate > Screen.PrimaryScreen.Bounds.Width
+                || FirstYCoordinate <= 0 || FirstYCoordinate > Screen.PrimaryScreen.Bounds.Height
+                || SecondXCoordinate <= 0 || SecondXCoordinate > Screen.PrimaryScreen.Bounds.Width
+                || SecondYCoordinate <= 0 || SecondYCoordinate > Screen.PrimaryScreen.Bounds.Height
+                || OvaleXCoordinate <= 0 || OvaleXCoordinate > Screen.PrimaryScreen.Bounds.Width
+                || OvaleYCoordinate <= 0 || OvaleYCoordinate > Screen.PrimaryScreen.Bounds.Height)
+            {
+                MessageBox.Show("Please make sure the X and Y offsets are correct, currently returns an offscreen coordinate.", "Offset error.");
+                return;
+            }
+
+            var visualizer = new OvaleVisualizer(OvaleXCoordinate, OvaleYCoordinate, FirstXCoordinate, FirstYCoordinate, SecondXCoordinate, SecondYCoordinate);
+            visualizer.Run();
+        }
     }
 }

@@ -30,6 +30,19 @@ namespace AHK_Builder_Plus_Plus.Functions
         }
 
         /// <summary>
+        /// Returns the x location on the screen for the center of the Ovale box.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static int ToOvaleX(this string s)
+        {
+            if (!int.TryParse(s, out int XcoordOffset))
+                return 0;
+
+            return (Screen.PrimaryScreen.Bounds.Width / 2) + XcoordOffset;
+        }
+
+        /// <summary>
         /// Returns the Y location on screen based on the Ovale offset.
         /// </summary>
         /// <param name="s">The string to convert.</param>
@@ -43,6 +56,19 @@ namespace AHK_Builder_Plus_Plus.Functions
             var additionalOffset = (main) ? -10 : 10;
 
             return (Screen.PrimaryScreen.Bounds.Height / 2) + ((YcoordOffset * -1) + (int)(additionalOffset * ovaleScale));
+        }
+
+        /// <summary>
+        /// Returns the y location on the screen for the center of the Ovale box.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static int ToOvaleY(this string s)
+        {
+            if (!int.TryParse(s, out int YcoordOffset))
+                return 0;
+
+            return (Screen.PrimaryScreen.Bounds.Height / 2) + (YcoordOffset * -1);
         }
 
         /// <summary>
