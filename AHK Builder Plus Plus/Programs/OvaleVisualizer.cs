@@ -1,41 +1,39 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AHK_Builder_Plus_Plus.Programs
 {
     internal class OvaleVisualizer
     {
-        private int OvaleX;
-        private int OvaleY;
-        private int MainX;
-        private int MainY;
-        private int AltX;
-        private int AltY;
+        private Process Visualizer;
 
-        public OvaleVisualizer(int OvaleXCoordinate, int OvaleYCoordinate, int PixelMainXCoordinate, int PixelMainYCoordinate, int PixelAltXCoordinate, int PixelAltYCoordinate)
+        public OvaleVisualizer()
         {
-            OvaleX = OvaleXCoordinate;
-            OvaleY = OvaleYCoordinate;
-            MainX = PixelMainXCoordinate;
-            MainY = PixelMainYCoordinate;
-            AltX = PixelAltXCoordinate;
-            AltY = PixelAltYCoordinate;
+            Visualizer = new Process();
+            Visualizer.StartInfo.FileName = Path.Combine(Environment.CurrentDirectory, "Tools", "OvaleVisualizer.exe");
+            Visualizer.StartInfo.UseShellExecute = false;
         }
 
-        public void Run()
+        public void Run(int OvaleXCoordinate, int OvaleYCoordinate, int PixelMainXCoordinate, int PixelMainYCoordinate, int PixelAltXCoordinate, int PixelAltYCoordinate)
         {
-            var process = new Process();
-            process.StartInfo.FileName = Path.Combine(Environment.CurrentDirectory, "Tools", "OvaleVisualizer.exe");
-            process.StartInfo.Arguments = $"{OvaleX} {OvaleY} {MainX} {MainY} {AltX} {AltY}";
-            process.StartInfo.UseShellExecute = false;
-            process.Start();
+            Visualizer.StartInfo.Arguments = $"{OvaleXCoordinate} {OvaleYCoordinate} {PixelMainXCoordinate} {PixelMainYCoordinate} {PixelAltXCoordinate} {PixelAltYCoordinate}";
+            Visualizer.Start();
+        }
 
-            MessageBox.Show("Currently displaying a visual representation of the pixel locations, close this window to disable it.", "Visualizer");
+        public bool IsRunning()
+        {
+            return Process.GetProcessesByName("OvaleVisualizer").Any();
+        }
 
-            process.Kill();
-            process.WaitForExit();
+        public void Kill()
+        {
+            Visualizer = Process.GetProcessesByName("OvaleVisualizer").First();
+
+            Visualizer.Kill();
+            Visualizer.WaitForExit();
         }
     }
 }

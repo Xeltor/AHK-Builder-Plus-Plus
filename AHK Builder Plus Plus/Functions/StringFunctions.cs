@@ -55,7 +55,7 @@ namespace AHK_Builder_Plus_Plus.Functions
 
             var additionalOffset = (main) ? -10 : 10;
 
-            return (Screen.PrimaryScreen.Bounds.Height / 2) + ((YcoordOffset * -1) + (int)(additionalOffset * ovaleScale));
+            return ((Screen.PrimaryScreen.Bounds.Height / 2) + (YcoordOffset * -1)) + (int)(additionalOffset * ovaleScale);
         }
 
         /// <summary>

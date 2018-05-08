@@ -27,16 +27,28 @@ namespace AHK_Builder_Plus_Plus
             var xml = new XmlFunctions(ahkDataSet);
             xml.Load();
 
+            // Check if visualizer was still running from previous crash.
+            var visualizer = new OvaleVisualizer();
+            if (visualizer.IsRunning())
+                visualizer.Kill();
+
             // Move form to front.
             Activate();
         }
 
         private void AhkBuilderPlusPlus_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // Save settings.
             SaveSettings();
 
+            // Clean temp backup file.
             var xml = new XmlFunctions(ahkDataSet);
             xml.ClearBackup();
+
+            // Check if visualizer is still running.
+            var visualizer = new OvaleVisualizer();
+            if (visualizer.IsRunning())
+                visualizer.Kill();
         }
 
         private void CoordinateBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -242,7 +254,7 @@ namespace AHK_Builder_Plus_Plus
 
             // Check if coordinates are good.
             var OvaleXCoordinate = xOffsetBox.Text.ToOvaleX();
-            var OvaleYCoordinate = xOffsetBox.Text.ToOvaleY();
+            var OvaleYCoordinate = yOffsetBox.Text.ToOvaleY();
             var FirstXCoordinate = xOffsetBox.Text.ToX();
             var FirstYCoordinate = yOffsetBox.Text.ToY(scale);
             var SecondXCoordinate = xOffsetBox.Text.ToX();
@@ -258,8 +270,12 @@ namespace AHK_Builder_Plus_Plus
                 return;
             }
 
-            var visualizer = new OvaleVisualizer(OvaleXCoordinate, OvaleYCoordinate, FirstXCoordinate, FirstYCoordinate, SecondXCoordinate, SecondYCoordinate);
-            visualizer.Run();
+            var visualizer = new OvaleVisualizer();
+
+            if (!visualizer.IsRunning())
+                visualizer.Run(OvaleXCoordinate, OvaleYCoordinate, FirstXCoordinate, FirstYCoordinate, SecondXCoordinate, SecondYCoordinate);
+            else
+                visualizer.Kill();
         }
     }
 }
