@@ -50,8 +50,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.ahkToggleKeyBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.yCoordinateBox = new System.Windows.Forms.TextBox();
-            this.xCoordinateBox = new System.Windows.Forms.TextBox();
+            this.yOffsetBox = new System.Windows.Forms.TextBox();
+            this.xOffsetBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.keybindBox = new System.Windows.Forms.GroupBox();
@@ -204,8 +204,8 @@
             this.settingBox.Controls.Add(this.label4);
             this.settingBox.Controls.Add(this.ahkToggleKeyBox);
             this.settingBox.Controls.Add(this.label3);
-            this.settingBox.Controls.Add(this.yCoordinateBox);
-            this.settingBox.Controls.Add(this.xCoordinateBox);
+            this.settingBox.Controls.Add(this.yOffsetBox);
+            this.settingBox.Controls.Add(this.xOffsetBox);
             this.settingBox.Controls.Add(this.label2);
             this.settingBox.Controls.Add(this.label1);
             this.settingBox.Location = new System.Drawing.Point(12, 12);
@@ -263,41 +263,41 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Ahk toggle key:";
             // 
-            // yCoordinateBox
+            // yOffsetBox
             // 
-            this.yCoordinateBox.Location = new System.Drawing.Point(94, 43);
-            this.yCoordinateBox.MaxLength = 4;
-            this.yCoordinateBox.Name = "yCoordinateBox";
-            this.yCoordinateBox.Size = new System.Drawing.Size(100, 20);
-            this.yCoordinateBox.TabIndex = 1;
-            this.yCoordinateBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CoordinateBox_KeyPress);
+            this.yOffsetBox.Location = new System.Drawing.Point(94, 43);
+            this.yOffsetBox.MaxLength = 4;
+            this.yOffsetBox.Name = "yOffsetBox";
+            this.yOffsetBox.Size = new System.Drawing.Size(100, 20);
+            this.yOffsetBox.TabIndex = 1;
+            this.yOffsetBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CoordinateBox_KeyPress);
             // 
-            // xCoordinateBox
+            // xOffsetBox
             // 
-            this.xCoordinateBox.Location = new System.Drawing.Point(94, 17);
-            this.xCoordinateBox.MaxLength = 4;
-            this.xCoordinateBox.Name = "xCoordinateBox";
-            this.xCoordinateBox.Size = new System.Drawing.Size(100, 20);
-            this.xCoordinateBox.TabIndex = 0;
-            this.xCoordinateBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CoordinateBox_KeyPress);
+            this.xOffsetBox.Location = new System.Drawing.Point(94, 17);
+            this.xOffsetBox.MaxLength = 4;
+            this.xOffsetBox.Name = "xOffsetBox";
+            this.xOffsetBox.Size = new System.Drawing.Size(100, 20);
+            this.xOffsetBox.TabIndex = 0;
+            this.xOffsetBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CoordinateBox_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(7, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Y coordinate:";
+            this.label2.Text = "Ovale Y offset:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(7, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "X coordinate:";
+            this.label1.Text = "Ovale X offset:";
             // 
             // keybindBox
             // 
@@ -434,8 +434,8 @@
         private System.Windows.Forms.GroupBox settingBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox xCoordinateBox;
-        private System.Windows.Forms.TextBox yCoordinateBox;
+        private System.Windows.Forms.TextBox xOffsetBox;
+        private System.Windows.Forms.TextBox yOffsetBox;
         private System.Windows.Forms.TextBox ahkToggleKeyBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MaskedTextBox ovaleScaleBox;

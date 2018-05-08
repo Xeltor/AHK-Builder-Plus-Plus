@@ -38,8 +38,8 @@ namespace AHK_Builder_Plus_Plus
 
         internal void SaveSettings()
         {
-            Properties.Settings.Default.xCoordinate = xCoordinateBox.Text;
-            Properties.Settings.Default.yCoordinate = yCoordinateBox.Text;
+            Properties.Settings.Default.xCoordinate = xOffsetBox.Text;
+            Properties.Settings.Default.yCoordinate = yOffsetBox.Text;
             Properties.Settings.Default.ovaleScale = ovaleScaleBox.Text;
             Properties.Settings.Default.ahkToggleKey = ahkToggleKeyBox.Text;
 
@@ -48,8 +48,8 @@ namespace AHK_Builder_Plus_Plus
 
         internal void LoadSettings()
         {
-            xCoordinateBox.Text = Properties.Settings.Default.xCoordinate;
-            yCoordinateBox.Text = Properties.Settings.Default.yCoordinate;
+            xOffsetBox.Text = Properties.Settings.Default.xCoordinate;
+            yOffsetBox.Text = Properties.Settings.Default.yCoordinate;
             ovaleScaleBox.Text = Properties.Settings.Default.ovaleScale;
             ahkToggleKeyBox.Text = Properties.Settings.Default.ahkToggleKey;
             

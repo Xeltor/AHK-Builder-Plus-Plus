@@ -58,8 +58,8 @@ namespace AHK_Builder_Plus_Plus
                     ahkFile.WriteLine("	WinWaitActive, World of Warcraft,");
 
                     // Get pixel locations.
-                    var pixelfinder = new Programs.PixelFinder(xCoordinateBox.Text, yCoordinateBox.Text, ovaleScaleBox.Text);
-                    ahkFile.WriteLine($"	PixelGetColor, CLRa, {xCoordinateBox.Text}, {yCoordinateBox.Text}");
+                    var pixelfinder = new Programs.PixelFinder(xOffsetBox.Text, yOffsetBox.Text, ovaleScaleBox.Text);
+                    ahkFile.WriteLine($"	PixelGetColor, CLRa, {xOffsetBox.Text}, {yOffsetBox.Text}");
                     ahkFile.WriteLine($"	PixelGetColor, CLRb, {pixelfinder.xCoordinateAlt}, {pixelfinder.yCoordinateAlt}");
 
                     // Generate if chain of doom.

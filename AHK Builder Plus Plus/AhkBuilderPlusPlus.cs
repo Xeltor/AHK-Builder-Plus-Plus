@@ -108,7 +108,7 @@ namespace AHK_Builder_Plus_Plus
                 return;
             }
 
-            var pixelFinder = new PixelFinder(xCoordinateBox.Text, yCoordinateBox.Text, ovaleScaleBox.Text);
+            var pixelFinder = new PixelFinder(xOffsetBox.Text, yOffsetBox.Text, ovaleScaleBox.Text);
             pixelFinder.Run();
 
             try
