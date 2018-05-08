@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AHK_Builder_Plus_Plus.Functions;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -9,9 +10,43 @@ namespace AHK_Builder_Plus_Plus
     {
         public DialogResult GenerateAHK()
         {
+            if (string.IsNullOrEmpty(ahkToggleKeyBox.Text))
+            {
+                MessageBox.Show("Please set an Ahk toggle key before generating an AHK file.", "Toggle key error");
+                return DialogResult.Cancel;
+            }
+
+            if (classBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a class before generating an AHK file.", "Class error");
+                return DialogResult.Cancel;
+            }
+
+            // Check if scale box is set properly.
+            var scale = ovaleScaleBox.Text.ToDouble();
+            if (scale < 0.5 || scale > 3)
+            {
+                MessageBox.Show("Please set an Ovale Scale % between 50 and 300", "Ovale scale error");
+                return DialogResult.Cancel;
+            }
+
+            // Check if coordinates are good.
+            var FirstXCoordinate = xOffsetBox.Text.ToX();
+            var FirstYCoordinate = yOffsetBox.Text.ToY(scale);
+            var SecondXCoordinate = xOffsetBox.Text.ToX();
+            var SecondYCoordinate = yOffsetBox.Text.ToY(scale, false);
+            if (FirstXCoordinate <= 0 || FirstXCoordinate > Screen.PrimaryScreen.Bounds.Width
+                || FirstYCoordinate <= 0 || FirstYCoordinate > Screen.PrimaryScreen.Bounds.Height
+                || SecondXCoordinate <= 0 || SecondXCoordinate > Screen.PrimaryScreen.Bounds.Width
+                || SecondYCoordinate <= 0 || SecondYCoordinate > Screen.PrimaryScreen.Bounds.Height)
+            {
+                MessageBox.Show("Please make sure the X and Y offsets are correct, currently returns an offscreen coordinate.", "Offset error.");
+                return DialogResult.Cancel;
+            }
+
             if (ahkDataTable.Rows.Count == 0)
             {
-                MessageBox.Show("Please add keybinds before generating an AHK file.", "Error");
+                MessageBox.Show("Please add keybinds before generating an AHK file.", "Keybind error");
                 return DialogResult.Cancel;
             }
 
@@ -55,9 +90,8 @@ namespace AHK_Builder_Plus_Plus
                     ahkFile.WriteLine("	WinWaitActive, World of Warcraft,");
 
                     // Get pixel locations.
-                    var pixelfinder = new Programs.PixelFinder(xOffsetBox.Text, yOffsetBox.Text, ovaleScaleBox.Text);
-                    ahkFile.WriteLine($"	PixelGetColor, CLRa, {xOffsetBox.Text}, {yOffsetBox.Text}");
-                    ahkFile.WriteLine($"	PixelGetColor, CLRb, {pixelfinder.xCoordinateAlt}, {pixelfinder.yCoordinateAlt}");
+                    ahkFile.WriteLine($"	PixelGetColor, CLRa, {FirstXCoordinate}, {FirstYCoordinate}");
+                    ahkFile.WriteLine($"	PixelGetColor, CLRb, {SecondXCoordinate}, {SecondYCoordinate}");
 
                     // Generate if chain of doom.
                     var strings = GenerateAhkColorCheck();

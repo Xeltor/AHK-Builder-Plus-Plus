@@ -6,27 +6,20 @@ namespace AHK_Builder_Plus_Plus.Programs
 {
     internal class PixelFinder
     {
-        private string xCoordinateMain;
-        private string yCoordinateMain;
-        private string ovaleScale;
-
-        public string xCoordinateAlt { get; private set; }
-        public string yCoordinateAlt { get; private set; }
+        private int xCoordinateMain;
+        private int yCoordinateMain;
+        private int xCoordinateAlt;
+        private int yCoordinateAlt;
 
         public PixelColors pixelColors { get; private set; }
 
-        public PixelFinder(string xCoordinate, string yCoordinate, string ovaleScale)
+        public PixelFinder(int FirstXCoordinate, int FirstYCoordinate, int SecondXCoordinate, int SecondYCoordinate)
         {
-            xCoordinateMain = xCoordinate;
-            yCoordinateMain = yCoordinate;
-            this.ovaleScale = ovaleScale;
+            xCoordinateMain = FirstXCoordinate;
+            yCoordinateMain = FirstYCoordinate;
 
-            // generate second set of coords.
-            if (int.TryParse(yCoordinate, out int yCoord) && double.TryParse(ovaleScale, out double scale))
-            {
-                xCoordinateAlt = xCoordinate;
-                yCoordinateAlt = (yCoord + (int)(13 * scale)).ToString();
-            }
+            xCoordinateAlt = SecondXCoordinate;
+            yCoordinateAlt = SecondYCoordinate;
         }
 
         public void Run()

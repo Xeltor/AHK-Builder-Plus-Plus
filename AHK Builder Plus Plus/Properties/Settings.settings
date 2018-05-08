@@ -2,10 +2,10 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AHK_Builder_Plus_Plus.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="xCoordinate" Type="System.String" Scope="User">
+    <Setting Name="xCoordinateOffset" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="yCoordinate" Type="System.String" Scope="User">
+    <Setting Name="yCoordinateOffset" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="wowLocation" Type="System.String" Scope="User">
@@ -15,7 +15,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ovaleScale" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1,0</Value>
+      <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="ahkToggleKey" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

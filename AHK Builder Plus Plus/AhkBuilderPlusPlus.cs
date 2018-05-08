@@ -41,7 +41,7 @@ namespace AHK_Builder_Plus_Plus
 
         private void CoordinateBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '-')
             {
                 e.Handled = true;
             }
@@ -55,22 +55,30 @@ namespace AHK_Builder_Plus_Plus
                 ahkToggleKeyBox.Text = ahkKey;
         }
 
+        private void OvaleScaleBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void OvaleScaleBox_Leave(object sender, EventArgs e)
         {
-            var sucess = double.TryParse(ovaleScaleBox.Text, out double scale);
+            var sucess = int.TryParse(ovaleScaleBox.Text, out int scale);
 
             if (!sucess)
             {
-                ovaleScaleBox.Text = "1,0";
+                ovaleScaleBox.Text = "100";
                 return;
             }
 
-            if (scale < 0.5)
-                scale = 0.5;
-            else if (scale > 3)
-                scale = 3;
+            if (scale < 50)
+                scale = 50;
+            else if (scale > 300)
+                scale = 300;
 
-            ovaleScaleBox.Text = string.Format("{0:0.0}", scale);
+            ovaleScaleBox.Text = scale.ToString();
         }
 
         private void LockSettingsButton_Click(object sender, EventArgs e)
@@ -97,18 +105,40 @@ namespace AHK_Builder_Plus_Plus
             // Check if a spell is selected.
             if (spellBox.SelectedItem == null)
             {
-                MessageBox.Show("Please select a spell before pressing the add button.","Select a spell");
+                MessageBox.Show("Please select a spell before pressing the add button.","Spell error");
                 return;
             }
 
             // Check if a keybind is set.
             if (string.IsNullOrEmpty(bindingBox.Text))
             {
-                MessageBox.Show("Please set a keybind before pressing the add button.", "Set a keybind");
+                MessageBox.Show("Please set a keybind before pressing the add button.", "Keybind error");
                 return;
             }
 
-            var pixelFinder = new PixelFinder(xOffsetBox.Text, yOffsetBox.Text, ovaleScaleBox.Text);
+            // Check if scale box is set properly.
+            var scale = ovaleScaleBox.Text.ToDouble();
+            if (scale < 0.5 || scale > 3)
+            {
+                MessageBox.Show("Please set an Ovale Scale % between 50 and 300", "Ovale scale error");
+                return;
+            }
+
+            // Check if coordinates are good.
+            var FirstXCoordinate = xOffsetBox.Text.ToX();
+            var FirstYCoordinate = yOffsetBox.Text.ToY(scale);
+            var SecondXCoordinate = xOffsetBox.Text.ToX();
+            var SecondYCoordinate = yOffsetBox.Text.ToY(scale, false);
+            if (FirstXCoordinate <= 0 || FirstXCoordinate > Screen.PrimaryScreen.Bounds.Width
+                || FirstYCoordinate <= 0 || FirstYCoordinate > Screen.PrimaryScreen.Bounds.Height
+                || SecondXCoordinate <= 0 || SecondXCoordinate > Screen.PrimaryScreen.Bounds.Width
+                || SecondYCoordinate <= 0 || SecondYCoordinate > Screen.PrimaryScreen.Bounds.Height)
+            {
+                MessageBox.Show("Please make sure the X and Y offsets are correct, currently returns an offscreen coordinate.", "Offset error.");
+                return;
+            }
+
+            var pixelFinder = new PixelFinder(FirstXCoordinate, FirstYCoordinate, SecondXCoordinate, SecondYCoordinate);
             pixelFinder.Run();
 
             try
@@ -122,7 +152,7 @@ namespace AHK_Builder_Plus_Plus
             }
             catch (ConstraintException)
             {
-                MessageBox.Show("A key binding with the same pixel color combination is already present in the table.", "Duplicate value.");
+                MessageBox.Show("A key binding with the same pixel color combination is already present in the table.", "Duplicate color combination error.");
                 Activate();
                 return;
             }

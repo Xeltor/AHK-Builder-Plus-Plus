@@ -46,7 +46,7 @@
             this.color2 = new System.Data.DataColumn();
             this.settingBox = new System.Windows.Forms.GroupBox();
             this.lockSettingsButton = new System.Windows.Forms.Button();
-            this.ovaleScaleBox = new System.Windows.Forms.MaskedTextBox();
+            this.ovaleScaleBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.ahkToggleKeyBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -228,11 +228,12 @@
             // ovaleScaleBox
             // 
             this.ovaleScaleBox.Location = new System.Drawing.Point(94, 69);
-            this.ovaleScaleBox.Mask = "0.0";
+            this.ovaleScaleBox.MaxLength = 3;
             this.ovaleScaleBox.Name = "ovaleScaleBox";
             this.ovaleScaleBox.Size = new System.Drawing.Size(100, 20);
             this.ovaleScaleBox.TabIndex = 2;
-            this.ovaleScaleBox.Text = "10";
+            this.ovaleScaleBox.Text = "100";
+            this.ovaleScaleBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OvaleScaleBox_KeyPress);
             this.ovaleScaleBox.Leave += new System.EventHandler(this.OvaleScaleBox_Leave);
             // 
             // label4
@@ -240,9 +241,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(7, 72);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.Size = new System.Drawing.Size(77, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Ovale scale:";
+            this.label4.Text = "Ovale scale %:";
             // 
             // ahkToggleKeyBox
             // 
@@ -266,7 +267,7 @@
             // yOffsetBox
             // 
             this.yOffsetBox.Location = new System.Drawing.Point(94, 43);
-            this.yOffsetBox.MaxLength = 4;
+            this.yOffsetBox.MaxLength = 5;
             this.yOffsetBox.Name = "yOffsetBox";
             this.yOffsetBox.Size = new System.Drawing.Size(100, 20);
             this.yOffsetBox.TabIndex = 1;
@@ -275,7 +276,7 @@
             // xOffsetBox
             // 
             this.xOffsetBox.Location = new System.Drawing.Point(94, 17);
-            this.xOffsetBox.MaxLength = 4;
+            this.xOffsetBox.MaxLength = 5;
             this.xOffsetBox.Name = "xOffsetBox";
             this.xOffsetBox.Size = new System.Drawing.Size(100, 20);
             this.xOffsetBox.TabIndex = 0;
@@ -438,7 +439,7 @@
         private System.Windows.Forms.TextBox yOffsetBox;
         private System.Windows.Forms.TextBox ahkToggleKeyBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox ovaleScaleBox;
+        private System.Windows.Forms.TextBox ovaleScaleBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button lockSettingsButton;
         private System.Windows.Forms.GroupBox keybindBox;

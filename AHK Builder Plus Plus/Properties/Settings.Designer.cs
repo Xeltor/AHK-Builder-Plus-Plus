@@ -26,24 +26,24 @@ namespace AHK_Builder_Plus_Plus.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string xCoordinate {
+        public string xCoordinateOffset {
             get {
-                return ((string)(this["xCoordinate"]));
+                return ((string)(this["xCoordinateOffset"]));
             }
             set {
-                this["xCoordinate"] = value;
+                this["xCoordinateOffset"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string yCoordinate {
+        public string yCoordinateOffset {
             get {
-                return ((string)(this["yCoordinate"]));
+                return ((string)(this["yCoordinateOffset"]));
             }
             set {
-                this["yCoordinate"] = value;
+                this["yCoordinateOffset"] = value;
             }
         }
         
@@ -73,7 +73,7 @@ namespace AHK_Builder_Plus_Plus.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1,0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public string ovaleScale {
             get {
                 return ((string)(this["ovaleScale"]));
