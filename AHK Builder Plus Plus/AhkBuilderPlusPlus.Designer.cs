@@ -55,6 +55,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.keybindBox = new System.Windows.Forms.GroupBox();
+            this.visualizerButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.bindingBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -63,7 +64,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.classBox = new System.Windows.Forms.ComboBox();
             this.wowBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.visualizerButton = new System.Windows.Forms.Button();
             this.finishBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AhkTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ahkDataSet)).BeginInit();
@@ -290,16 +290,16 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Ovale Y offset:";
+            this.label2.Text = "Ovale V offset:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(7, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Ovale X offset:";
+            this.label1.Text = "Ovale H offset:";
             // 
             // keybindBox
             // 
@@ -317,6 +317,17 @@
             this.keybindBox.TabIndex = 0;
             this.keybindBox.TabStop = false;
             this.keybindBox.Text = "Keybinds";
+            // 
+            // visualizerButton
+            // 
+            this.visualizerButton.Location = new System.Drawing.Point(9, 118);
+            this.visualizerButton.Margin = new System.Windows.Forms.Padding(0);
+            this.visualizerButton.Name = "visualizerButton";
+            this.visualizerButton.Size = new System.Drawing.Size(21, 23);
+            this.visualizerButton.TabIndex = 7;
+            this.visualizerButton.Text = "V";
+            this.visualizerButton.UseVisualStyleBackColor = true;
+            this.visualizerButton.Click += new System.EventHandler(this.visualizerButton_Click);
             // 
             // addButton
             // 
@@ -397,17 +408,6 @@
             // 
             this.wowBrowserDialog.Description = "Please select your World of Warcraft folder.";
             this.wowBrowserDialog.ShowNewFolderButton = false;
-            // 
-            // visualizerButton
-            // 
-            this.visualizerButton.Location = new System.Drawing.Point(9, 118);
-            this.visualizerButton.Margin = new System.Windows.Forms.Padding(0);
-            this.visualizerButton.Name = "visualizerButton";
-            this.visualizerButton.Size = new System.Drawing.Size(21, 23);
-            this.visualizerButton.TabIndex = 7;
-            this.visualizerButton.Text = "V";
-            this.visualizerButton.UseVisualStyleBackColor = true;
-            this.visualizerButton.Click += new System.EventHandler(this.visualizerButton_Click);
             // 
             // AhkBuilderPlusPlus
             // 
