@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace AHK_Builder_Plus_Plus
 {
-    public partial class AhkBuilderPlusPlus : Form
+    public partial class AhkBuilderPlusPlus
     {
         internal void InitSettings()
         {
