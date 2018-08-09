@@ -72,7 +72,7 @@ namespace AHK_Builder_Plus_Plus
                         ahkFile.WriteLine("SetScrollLockState, AlwaysOff");
 
                     if (ahkToggleKeyBox.Text == "CapsLock")
-                        ahkFile.WriteLine("SetScrollLockState, AlwaysOff");
+                        ahkFile.WriteLine("SetCapsLockState, AlwaysOff");
 
                     ahkFile.WriteLine("");
                     ahkFile.WriteLine($"{ahkToggleKeyBox.Text}::");
