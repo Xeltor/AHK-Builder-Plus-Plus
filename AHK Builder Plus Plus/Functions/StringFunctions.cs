@@ -35,7 +35,7 @@ namespace AHK_Builder_Plus_Plus.Functions
                 XcoordOffset = (int)(scaler * XcoordOffset);
             }
 
-            return (Screen.PrimaryScreen.Bounds.Width / 2) + ((XcoordOffset - 3) - 2);
+            return (Screen.PrimaryScreen.Bounds.Width / 2) + ((XcoordOffset - 3) - 4);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace AHK_Builder_Plus_Plus.Functions
             if (!int.TryParse(s, out int YcoordOffset))
                 return 0;
 
-            var additionalOffset = (main) ? -10 : 10;
+            var additionalOffset = (main) ? -12 : 12;
 
             // Correct for WoW UI scaling.
             var config = new WoWConfig();

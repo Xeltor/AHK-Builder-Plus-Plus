@@ -282,7 +282,7 @@ namespace AHK_Builder_Plus_Plus
             var offSet = 20;
 
             if (config.IsUiScaleEnabled())
-                offSet = (int)(config.Scaler() * 20);
+                offSet = (int)(config.Scaler() * offSet);
 
             if (!visualizer.IsRunning())
                 visualizer.Run(OvaleXCoordinate, OvaleYCoordinate, FirstXCoordinate, FirstYCoordinate, SecondXCoordinate, SecondYCoordinate, offSet);
