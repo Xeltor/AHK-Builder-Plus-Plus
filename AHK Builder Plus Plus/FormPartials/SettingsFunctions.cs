@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace AHK_Builder_Plus_Plus
@@ -11,7 +12,7 @@ namespace AHK_Builder_Plus_Plus
             var result = wowBrowserDialog.ShowDialog();
 
             if (result != DialogResult.OK)
-                goto retry;
+                Environment.Exit(42);
 
             if (!File.Exists(Path.Combine(wowBrowserDialog.SelectedPath, @"Wow.exe")))
                 goto retry;

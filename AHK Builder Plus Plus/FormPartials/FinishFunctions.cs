@@ -109,6 +109,23 @@ namespace AHK_Builder_Plus_Plus
                 return DialogResult.Abort;
             }
 
+            // Save as XML for later loading purposes.
+            var f = new FileInfo(ahkFileLocation.FileName);
+
+            // Create directory if it doesnt exist.
+            var d = new DirectoryInfo(Path.Combine(f.DirectoryName, "XML"));
+            if (!d.Exists)
+                d.Create();
+
+            // Hide directory from user sight.
+            d.Attributes = FileAttributes.Hidden;
+
+            // Save XML.
+            var XML = new XmlFunctions(ahkDataSet);
+            var XmlFile = Path.ChangeExtension(Path.Combine(d.FullName, f.Name), ".xml");
+
+            XML.Save(XmlFile);
+
             return result;
         }
 

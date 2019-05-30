@@ -103,6 +103,7 @@
             this.saveButton.TabIndex = 1;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Visible = false;
             this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // loadButton
@@ -127,7 +128,7 @@
             this.AhkTable.DataMember = "AhkData";
             this.AhkTable.DataSource = this.ahkDataSet;
             this.AhkTable.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AhkTable.Location = new System.Drawing.Point(0, 166);
+            this.AhkTable.Location = new System.Drawing.Point(0, 165);
             this.AhkTable.Name = "AhkTable";
             this.AhkTable.Size = new System.Drawing.Size(707, 410);
             this.AhkTable.TabIndex = 3;
@@ -406,14 +407,14 @@
             // 
             // wowBrowserDialog
             // 
-            this.wowBrowserDialog.Description = "Please select your World of Warcraft folder.";
+            this.wowBrowserDialog.Description = "Please select your World of Warcraft _retail_ folder.";
             this.wowBrowserDialog.ShowNewFolderButton = false;
             // 
             // AhkBuilderPlusPlus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 576);
+            this.ClientSize = new System.Drawing.Size(707, 575);
             this.Controls.Add(this.keybindBox);
             this.Controls.Add(this.settingBox);
             this.Controls.Add(this.AhkTable);

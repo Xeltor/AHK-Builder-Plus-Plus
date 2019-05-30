@@ -194,7 +194,7 @@ namespace AHK_Builder_Plus_Plus
         private void LoadButton_Click(object sender, EventArgs e)
         {
             var openXML = new OpenFileDialog();
-            openXML.Filter = "XML Files|*.xml";
+            openXML.Filter = "AHK Files|*.ahk";
             openXML.RestoreDirectory = true;
             openXML.Title = "Load a previously created rotation";
             openXML.Multiselect = false;
@@ -204,8 +204,13 @@ namespace AHK_Builder_Plus_Plus
             if (result != DialogResult.OK)
                 return;
 
+            // Convert location to XML folder location.
+            var f = new FileInfo(openXML.FileName);
+            var XmlFile = Path.ChangeExtension(Path.Combine(f.DirectoryName, "XML", f.Name), ".xml");
+
+            // Load XML file.
             var xml = new XmlFunctions(ahkDataSet);
-            var loadResult = xml.Load(openXML.FileName);
+            var loadResult = xml.Load(XmlFile);
 
             if (loadResult)
                 MessageBox.Show("Rotation loaded.", "Import completed.");
