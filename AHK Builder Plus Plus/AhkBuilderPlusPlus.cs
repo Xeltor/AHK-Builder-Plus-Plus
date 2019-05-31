@@ -220,29 +220,7 @@ namespace AHK_Builder_Plus_Plus
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (ahkDataTable.Rows.Count == 0)
-            {
-                MessageBox.Show("Nothing to save.", "Error");
-                return;
-            }
-
-            var saveXML = new SaveFileDialog();
-            saveXML.Filter = "XML Files|*.xml";
-            saveXML.RestoreDirectory = true;
-            saveXML.Title = "Select a location to save your rotation.";
-
-            var result = saveXML.ShowDialog();
-
-            if (result != DialogResult.OK)
-                return;
-
-            var xml = new XmlFunctions(ahkDataSet);
-            var saveResult = xml.Save(saveXML.FileName);
-
-            if (saveResult)
-                MessageBox.Show("Rotation saved.", "Export completed.");
-            else
-                MessageBox.Show("Could not save XML file.", "Export failed.");
+            throw new NotImplementedException();
         }
 
         private void generateAhkButton_Click(object sender, EventArgs e)
@@ -293,6 +271,14 @@ namespace AHK_Builder_Plus_Plus
                 visualizer.Run(OvaleXCoordinate, OvaleYCoordinate, FirstXCoordinate, FirstYCoordinate, SecondXCoordinate, SecondYCoordinate, offSet);
             else
                 visualizer.Kill();
+        }
+
+        private void HelpTip_MouseEnter(object sender, EventArgs e)
+        {
+            helpTip.SetToolTip(xOffsetBox, "You can find this in WoW by typing /ovale config in the chat.");
+            helpTip.SetToolTip(yOffsetBox, "You can find this in WoW by typing /ovale config in the chat.");
+            helpTip.SetToolTip(ovaleScaleBox, "You can find this in WoW by typing /ovale config in the chat.");
+            helpTip.SetToolTip(visualizerButton, "Shows a red cross and 2 red dots to visualize where the builder is getting color 1 & 2.");
         }
     }
 }

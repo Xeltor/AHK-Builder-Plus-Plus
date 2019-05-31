@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AhkBuilderPlusPlus));
             this.finishBox = new System.Windows.Forms.GroupBox();
             this.generateAhkButton = new System.Windows.Forms.Button();
@@ -64,6 +65,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.classBox = new System.Windows.Forms.ComboBox();
             this.wowBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.helpTip = new System.Windows.Forms.ToolTip(this.components);
             this.finishBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AhkTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ahkDataSet)).BeginInit();
@@ -128,7 +130,7 @@
             this.AhkTable.DataMember = "AhkData";
             this.AhkTable.DataSource = this.ahkDataSet;
             this.AhkTable.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AhkTable.Location = new System.Drawing.Point(0, 165);
+            this.AhkTable.Location = new System.Drawing.Point(0, 166);
             this.AhkTable.Name = "AhkTable";
             this.AhkTable.Size = new System.Drawing.Size(707, 410);
             this.AhkTable.TabIndex = 3;
@@ -237,6 +239,7 @@
             this.ovaleScaleBox.Text = "100";
             this.ovaleScaleBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OvaleScaleBox_KeyPress);
             this.ovaleScaleBox.Leave += new System.EventHandler(this.OvaleScaleBox_Leave);
+            this.ovaleScaleBox.MouseEnter += new System.EventHandler(this.HelpTip_MouseEnter);
             // 
             // label4
             // 
@@ -274,6 +277,7 @@
             this.yOffsetBox.Size = new System.Drawing.Size(100, 20);
             this.yOffsetBox.TabIndex = 1;
             this.yOffsetBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CoordinateBox_KeyPress);
+            this.yOffsetBox.MouseEnter += new System.EventHandler(this.HelpTip_MouseEnter);
             // 
             // xOffsetBox
             // 
@@ -283,6 +287,7 @@
             this.xOffsetBox.Size = new System.Drawing.Size(100, 20);
             this.xOffsetBox.TabIndex = 0;
             this.xOffsetBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CoordinateBox_KeyPress);
+            this.xOffsetBox.MouseEnter += new System.EventHandler(this.HelpTip_MouseEnter);
             // 
             // label2
             // 
@@ -329,6 +334,7 @@
             this.visualizerButton.Text = "V";
             this.visualizerButton.UseVisualStyleBackColor = true;
             this.visualizerButton.Click += new System.EventHandler(this.visualizerButton_Click);
+            this.visualizerButton.MouseEnter += new System.EventHandler(this.HelpTip_MouseEnter);
             // 
             // addButton
             // 
@@ -410,11 +416,17 @@
             this.wowBrowserDialog.Description = "Please select your World of Warcraft _retail_ folder.";
             this.wowBrowserDialog.ShowNewFolderButton = false;
             // 
+            // helpTip
+            // 
+            this.helpTip.AutoPopDelay = 10000;
+            this.helpTip.InitialDelay = 500;
+            this.helpTip.ReshowDelay = 100;
+            // 
             // AhkBuilderPlusPlus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 575);
+            this.ClientSize = new System.Drawing.Size(707, 576);
             this.Controls.Add(this.keybindBox);
             this.Controls.Add(this.settingBox);
             this.Controls.Add(this.AhkTable);
@@ -476,6 +488,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button visualizerButton;
+        private System.Windows.Forms.ToolTip helpTip;
     }
 }
 
