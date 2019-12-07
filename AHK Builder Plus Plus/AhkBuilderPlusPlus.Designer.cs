@@ -95,7 +95,7 @@
             this.generateAhkButton.TabIndex = 2;
             this.generateAhkButton.Text = "Generate AHK";
             this.generateAhkButton.UseVisualStyleBackColor = true;
-            this.generateAhkButton.Click += new System.EventHandler(this.generateAhkButton_Click);
+            this.generateAhkButton.Click += new System.EventHandler(this.GenerateAhkButton_Click);
             // 
             // saveButton
             // 
@@ -333,7 +333,7 @@
             this.visualizerButton.TabIndex = 7;
             this.visualizerButton.Text = "V";
             this.visualizerButton.UseVisualStyleBackColor = true;
-            this.visualizerButton.Click += new System.EventHandler(this.visualizerButton_Click);
+            this.visualizerButton.Click += new System.EventHandler(this.VisualizerButton_Click);
             this.visualizerButton.MouseEnter += new System.EventHandler(this.HelpTip_MouseEnter);
             // 
             // addButton

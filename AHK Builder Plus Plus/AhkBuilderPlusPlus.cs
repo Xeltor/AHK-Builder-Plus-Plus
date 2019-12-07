@@ -193,29 +193,32 @@ namespace AHK_Builder_Plus_Plus
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            var openXML = new OpenFileDialog();
-            openXML.Filter = "AHK Files|*.ahk";
-            openXML.RestoreDirectory = true;
-            openXML.Title = "Load a previously created rotation";
-            openXML.Multiselect = false;
+            using (OpenFileDialog openXML = new OpenFileDialog
+            {
+                Filter = "AHK Files|*.ahk",
+                RestoreDirectory = true,
+                Title = "Load a previously created rotation",
+                Multiselect = false
+            })
+            {
+                var result = openXML.ShowDialog();
 
-            var result = openXML.ShowDialog();
+                if (result != DialogResult.OK)
+                    return;
 
-            if (result != DialogResult.OK)
-                return;
+                // Convert location to XML folder location.
+                var f = new FileInfo(openXML.FileName);
+                var XmlFile = Path.ChangeExtension(Path.Combine(f.DirectoryName, "XML", f.Name), ".xml");
 
-            // Convert location to XML folder location.
-            var f = new FileInfo(openXML.FileName);
-            var XmlFile = Path.ChangeExtension(Path.Combine(f.DirectoryName, "XML", f.Name), ".xml");
+                // Load XML file.
+                var xml = new XmlFunctions(ahkDataSet);
+                var loadResult = xml.Load(XmlFile);
 
-            // Load XML file.
-            var xml = new XmlFunctions(ahkDataSet);
-            var loadResult = xml.Load(XmlFile);
-
-            if (loadResult)
-                MessageBox.Show("Rotation loaded.", "Import completed.");
-            else
-                MessageBox.Show("Could not load XML file.", "Import failed.");
+                if (loadResult)
+                    MessageBox.Show("Rotation loaded.", "Import completed.");
+                else
+                    MessageBox.Show("Could not load XML file.", "Import failed.");
+            }
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -223,7 +226,7 @@ namespace AHK_Builder_Plus_Plus
             throw new NotImplementedException();
         }
 
-        private void generateAhkButton_Click(object sender, EventArgs e)
+        private void GenerateAhkButton_Click(object sender, EventArgs e)
         {
             var result = GenerateAHK();
 
@@ -231,7 +234,7 @@ namespace AHK_Builder_Plus_Plus
                 MessageBox.Show("Rotation saved as AHK.", "AHK created.");
         }
 
-        private void visualizerButton_Click(object sender, EventArgs e)
+        private void VisualizerButton_Click(object sender, EventArgs e)
         {
             // Check if scale box is set properly.
             var scale = ovaleScaleBox.Text.ToDouble();
