@@ -14,8 +14,8 @@ namespace AHK_Builder_Plus_Plus.Functions
         /// <returns></returns>
         public static string ToAhk(this KeyEventArgs e, bool CheckModifiers = true, bool Braceless = false)
         {
-            string key = null;
-            
+            string key;
+
             // Alphabetic keys
             if (e.KeyCode >= Keys.A && e.KeyCode <= Keys.Z)
             {
@@ -102,29 +102,26 @@ namespace AHK_Builder_Plus_Plus.Functions
             if (!CheckModifiers)
                 return key;
             else
-                return mods.Start + key + mods.End;
+                return mods.Start + key;
         }
 
         private static Modifiers ProcessModifiers(KeyEventArgs e)
         {
             var mods = new Modifiers();
 
-            if (e.Control)
-            {
-                mods.Start += @"{CTRLDOWN}";
-                mods.End = @"{CTRLUP}" + mods.End;
-            }
-
             if (e.Shift)
             {
-                mods.Start += @"{SHIFTDOWN}";
-                mods.End = @"{SHIFTUP}" + mods.End;
+                mods.Start += @"+";
+            }
+
+            if (e.Control)
+            {
+                mods.Start += @"^";
             }
 
             if (e.Alt)
             {
-                mods.Start += @"{ALTDOWN}";
-                mods.End = @"{ALTUP}" + mods.End;
+                mods.Start += @"!";
             }
 
             return mods;

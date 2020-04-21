@@ -31,8 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AhkBuilderPlusPlus));
             this.finishBox = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.SlowMatching = new System.Windows.Forms.RadioButton();
+            this.AltMatching = new System.Windows.Forms.RadioButton();
+            this.NormalMatching = new System.Windows.Forms.RadioButton();
             this.generateAhkButton = new System.Windows.Forms.Button();
-            this.saveButton = new System.Windows.Forms.Button();
             this.loadButton = new System.Windows.Forms.Button();
             this.AhkTable = new System.Windows.Forms.DataGridView();
             this.spellDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,8 +80,11 @@
             // finishBox
             // 
             this.finishBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.finishBox.Controls.Add(this.label8);
+            this.finishBox.Controls.Add(this.SlowMatching);
+            this.finishBox.Controls.Add(this.AltMatching);
+            this.finishBox.Controls.Add(this.NormalMatching);
             this.finishBox.Controls.Add(this.generateAhkButton);
-            this.finishBox.Controls.Add(this.saveButton);
             this.finishBox.Controls.Add(this.loadButton);
             this.finishBox.Location = new System.Drawing.Point(566, 12);
             this.finishBox.Name = "finishBox";
@@ -86,6 +92,49 @@
             this.finishBox.TabIndex = 2;
             this.finishBox.TabStop = false;
             this.finishBox.Text = "Finish";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 51);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(101, 13);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Color matching style";
+            this.helpTip.SetToolTip(this.label8, resources.GetString("label8.ToolTip"));
+            // 
+            // SlowMatching
+            // 
+            this.SlowMatching.AutoSize = true;
+            this.SlowMatching.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SlowMatching.Location = new System.Drawing.Point(74, 90);
+            this.SlowMatching.Name = "SlowMatching";
+            this.SlowMatching.Size = new System.Drawing.Size(48, 17);
+            this.SlowMatching.TabIndex = 9;
+            this.SlowMatching.Text = "Slow";
+            this.SlowMatching.UseVisualStyleBackColor = true;
+            // 
+            // AltMatching
+            // 
+            this.AltMatching.AutoSize = true;
+            this.AltMatching.Location = new System.Drawing.Point(9, 90);
+            this.AltMatching.Name = "AltMatching";
+            this.AltMatching.Size = new System.Drawing.Size(37, 17);
+            this.AltMatching.TabIndex = 8;
+            this.AltMatching.Text = "Alt";
+            this.AltMatching.UseVisualStyleBackColor = true;
+            // 
+            // NormalMatching
+            // 
+            this.NormalMatching.AutoSize = true;
+            this.NormalMatching.Checked = true;
+            this.NormalMatching.Location = new System.Drawing.Point(9, 70);
+            this.NormalMatching.Name = "NormalMatching";
+            this.NormalMatching.Size = new System.Drawing.Size(58, 17);
+            this.NormalMatching.TabIndex = 7;
+            this.NormalMatching.TabStop = true;
+            this.NormalMatching.Text = "Normal";
+            this.NormalMatching.UseVisualStyleBackColor = true;
             // 
             // generateAhkButton
             // 
@@ -96,17 +145,6 @@
             this.generateAhkButton.Text = "Generate AHK";
             this.generateAhkButton.UseVisualStyleBackColor = true;
             this.generateAhkButton.Click += new System.EventHandler(this.GenerateAhkButton_Click);
-            // 
-            // saveButton
-            // 
-            this.saveButton.Location = new System.Drawing.Point(6, 48);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(116, 23);
-            this.saveButton.TabIndex = 1;
-            this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Visible = false;
-            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // loadButton
             // 
@@ -130,7 +168,7 @@
             this.AhkTable.DataMember = "AhkData";
             this.AhkTable.DataSource = this.ahkDataSet;
             this.AhkTable.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AhkTable.Location = new System.Drawing.Point(0, 166);
+            this.AhkTable.Location = new System.Drawing.Point(0, 165);
             this.AhkTable.Name = "AhkTable";
             this.AhkTable.Size = new System.Drawing.Size(707, 410);
             this.AhkTable.TabIndex = 3;
@@ -426,7 +464,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 576);
+            this.ClientSize = new System.Drawing.Size(707, 575);
             this.Controls.Add(this.keybindBox);
             this.Controls.Add(this.settingBox);
             this.Controls.Add(this.AhkTable);
@@ -440,6 +478,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AhkBuilderPlusPlus_FormClosing);
             this.Load += new System.EventHandler(this.AhkBuilderPlusPlus_Load);
             this.finishBox.ResumeLayout(false);
+            this.finishBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AhkTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ahkDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ahkDataTable)).EndInit();
@@ -455,7 +494,6 @@
 
         private System.Windows.Forms.GroupBox finishBox;
         private System.Windows.Forms.Button generateAhkButton;
-        private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.DataGridView AhkTable;
         private System.Windows.Forms.GroupBox settingBox;
@@ -489,6 +527,10 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button visualizerButton;
         private System.Windows.Forms.ToolTip helpTip;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RadioButton SlowMatching;
+        private System.Windows.Forms.RadioButton AltMatching;
+        private System.Windows.Forms.RadioButton NormalMatching;
     }
 }
 

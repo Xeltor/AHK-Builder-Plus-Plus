@@ -16,7 +16,7 @@ WinActivate, World of Warcraft
 WinWaitActive, World of Warcraft
 
 Sleep, 100
-PixelGetColor, HBa, %1%, %2%
-PixelGetColor, HBb, %3%, %4%
+PixelGetColor, HBa, %1%, %2%, Slow
+PixelGetColor, HBb, %3%, %4%, Slow
 
 FileAppend %HBa%:%HBb%, *
