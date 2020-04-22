@@ -69,6 +69,7 @@
             this.classBox = new System.Windows.Forms.ComboBox();
             this.wowBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.helpTip = new System.Windows.Forms.ToolTip(this.components);
+            this.FuzzyMatching = new System.Windows.Forms.RadioButton();
             this.finishBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AhkTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ahkDataSet)).BeginInit();
@@ -80,6 +81,7 @@
             // finishBox
             // 
             this.finishBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.finishBox.Controls.Add(this.FuzzyMatching);
             this.finishBox.Controls.Add(this.label8);
             this.finishBox.Controls.Add(this.SlowMatching);
             this.finishBox.Controls.Add(this.AltMatching);
@@ -98,16 +100,16 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(6, 51);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(101, 13);
+            this.label8.Size = new System.Drawing.Size(119, 13);
             this.label8.TabIndex = 10;
-            this.label8.Text = "Color matching style";
+            this.label8.Text = "Color matching method*";
             this.helpTip.SetToolTip(this.label8, resources.GetString("label8.ToolTip"));
             // 
             // SlowMatching
             // 
             this.SlowMatching.AutoSize = true;
             this.SlowMatching.Cursor = System.Windows.Forms.Cursors.Default;
-            this.SlowMatching.Location = new System.Drawing.Point(74, 90);
+            this.SlowMatching.Location = new System.Drawing.Point(74, 70);
             this.SlowMatching.Name = "SlowMatching";
             this.SlowMatching.Size = new System.Drawing.Size(48, 17);
             this.SlowMatching.TabIndex = 9;
@@ -168,7 +170,7 @@
             this.AhkTable.DataMember = "AhkData";
             this.AhkTable.DataSource = this.ahkDataSet;
             this.AhkTable.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AhkTable.Location = new System.Drawing.Point(0, 165);
+            this.AhkTable.Location = new System.Drawing.Point(0, 166);
             this.AhkTable.Name = "AhkTable";
             this.AhkTable.Size = new System.Drawing.Size(707, 410);
             this.AhkTable.TabIndex = 3;
@@ -460,11 +462,22 @@
             this.helpTip.InitialDelay = 500;
             this.helpTip.ReshowDelay = 100;
             // 
+            // FuzzyMatching
+            // 
+            this.FuzzyMatching.AutoSize = true;
+            this.FuzzyMatching.Cursor = System.Windows.Forms.Cursors.Default;
+            this.FuzzyMatching.Location = new System.Drawing.Point(74, 90);
+            this.FuzzyMatching.Name = "FuzzyMatching";
+            this.FuzzyMatching.Size = new System.Drawing.Size(52, 17);
+            this.FuzzyMatching.TabIndex = 11;
+            this.FuzzyMatching.Text = "Fuzzy";
+            this.FuzzyMatching.UseVisualStyleBackColor = true;
+            // 
             // AhkBuilderPlusPlus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 575);
+            this.ClientSize = new System.Drawing.Size(707, 576);
             this.Controls.Add(this.keybindBox);
             this.Controls.Add(this.settingBox);
             this.Controls.Add(this.AhkTable);
@@ -531,6 +544,7 @@
         private System.Windows.Forms.RadioButton SlowMatching;
         private System.Windows.Forms.RadioButton AltMatching;
         private System.Windows.Forms.RadioButton NormalMatching;
+        private System.Windows.Forms.RadioButton FuzzyMatching;
     }
 }
 

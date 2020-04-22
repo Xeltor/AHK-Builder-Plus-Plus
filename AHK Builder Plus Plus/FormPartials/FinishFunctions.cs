@@ -110,12 +110,31 @@ namespace AHK_Builder_Plus_Plus
                         }
 
                         // Generate if chain of doom.
-                        var strings = GenerateAhkColorCheck();
+                        var strings = GenerateAhkColorCheck(FuzzyMatching.Checked);
                         foreach (var line in strings)
                             ahkFile.WriteLine(line);
 
                         ahkFile.WriteLine("	}");
                         ahkFile.WriteLine("return");
+
+                        if (FuzzyMatching.Checked)
+                        {
+                            ahkFile.WriteLine("");
+                            ahkFile.WriteLine("Compare(color1, color2, vary=20) {");
+                            ahkFile.WriteLine("	c1 := ToRGB(color1)");
+                            ahkFile.WriteLine("	c2 := ToRGB(color2)");
+                            ahkFile.WriteLine("");
+                            ahkFile.WriteLine("	rdiff := Abs( c1.r - c2.r )");
+                            ahkFile.WriteLine("	gdiff := Abs( c1.g - c2.g )");
+                            ahkFile.WriteLine("	bdiff := Abs( c1.b - c2.b )");
+                            ahkFile.WriteLine("");
+                            ahkFile.WriteLine("	return rdiff <= vary && gdiff <= vary && bdiff <= vary");
+                            ahkFile.WriteLine("}");
+                            ahkFile.WriteLine("");
+                            ahkFile.WriteLine("ToRGB(color) {");
+                            ahkFile.WriteLine("	return { \"r\": (color >> 16) & 0xFF, \"g\": (color >> 8) & 0xFF, \"b\": color & 0xFF }");
+                            ahkFile.WriteLine("}");
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -146,7 +165,7 @@ namespace AHK_Builder_Plus_Plus
             }
         }
 
-        private string[] GenerateAhkColorCheck()
+        private string[] GenerateAhkColorCheck(bool Fuzzy = false)
         {
             var strings = new List<string>();
 
@@ -155,12 +174,20 @@ namespace AHK_Builder_Plus_Plus
                 var row = AhkTable.Rows[i];
                 if (i == 0)
                 {
-                    strings.Add($"	if (CLRa = \"{row.Cells[2].Value}\" and CLRb = \"{row.Cells[3].Value}\") {{ ; {row.Cells[0].Value}");
+                    if (!Fuzzy)
+                        strings.Add($"	if (CLRa = \"{row.Cells[2].Value}\" and CLRb = \"{row.Cells[3].Value}\") {{ ; {row.Cells[0].Value}");
+                    else
+                        strings.Add($"	if (Compare(\"{row.Cells[2].Value}\", CLRa) and Compare(\"{row.Cells[3].Value}\", CLRb)) {{ ; {row.Cells[0].Value}");
+
                     strings.Add($"		Send, {row.Cells[1].Value}");
                 }
                 else
                 {
-                    strings.Add($"	}} else if (CLRa = \"{row.Cells[2].Value}\" and CLRb = \"{row.Cells[3].Value}\") {{ ; {row.Cells[0].Value}");
+                    if (!Fuzzy)
+                        strings.Add($"	}} else if (CLRa = \"{row.Cells[2].Value}\" and CLRb = \"{row.Cells[3].Value}\") {{ ; {row.Cells[0].Value}");
+                    else
+                        strings.Add($"	}} else if (Compare(\"{row.Cells[2].Value}\", CLRa) and Compare(\"{row.Cells[3].Value}\", CLRb)) {{ ; {row.Cells[0].Value}");
+
                     strings.Add($"		Send, {row.Cells[1].Value}");
                 }
             }
