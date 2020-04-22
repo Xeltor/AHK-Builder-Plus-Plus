@@ -93,12 +93,7 @@ namespace AHK_Builder_Plus_Plus
                         ahkFile.WriteLine("	WinWaitActive, World of Warcraft,");
 
                         // Get pixel locations.
-                        if (NormalMatching.Checked)
-                        {
-                            ahkFile.WriteLine($"	PixelGetColor, CLRa, {FirstXCoordinate}, {FirstYCoordinate}");
-                            ahkFile.WriteLine($"	PixelGetColor, CLRb, {SecondXCoordinate}, {SecondYCoordinate}");
-                        }
-                        else if (AltMatching.Checked)
+                        if (AltMatching.Checked)
                         {
                             ahkFile.WriteLine($"	PixelGetColor, CLRa, {FirstXCoordinate}, {FirstYCoordinate}, Alt");
                             ahkFile.WriteLine($"	PixelGetColor, CLRb, {SecondXCoordinate}, {SecondYCoordinate}, Alt");
@@ -107,6 +102,11 @@ namespace AHK_Builder_Plus_Plus
                         {
                             ahkFile.WriteLine($"	PixelGetColor, CLRa, {FirstXCoordinate}, {FirstYCoordinate}, Slow");
                             ahkFile.WriteLine($"	PixelGetColor, CLRb, {SecondXCoordinate}, {SecondYCoordinate}, Slow");
+                        }
+                        else
+                        {
+                            ahkFile.WriteLine($"	PixelGetColor, CLRa, {FirstXCoordinate}, {FirstYCoordinate}");
+                            ahkFile.WriteLine($"	PixelGetColor, CLRb, {SecondXCoordinate}, {SecondYCoordinate}");
                         }
 
                         // Generate if chain of doom.
