@@ -34,6 +34,12 @@ namespace AHK_Builder_Plus_Plus
 
             // Move form to front.
             Activate();
+
+            // First time setup?
+            if (xOffsetBox.Text == "0" || yOffsetBox.Text == "0" || string.IsNullOrEmpty(ahkToggleKeyBox.Text))
+            {
+                tabControl1.SelectTab(1);
+            }
         }
 
         private void AhkBuilderPlusPlus_FormClosing(object sender, FormClosingEventArgs e)
@@ -91,12 +97,6 @@ namespace AHK_Builder_Plus_Plus
                 scale = 300;
 
             ovaleScaleBox.Text = scale.ToString();
-        }
-
-        private void LockSettingsButton_Click(object sender, EventArgs e)
-        {
-            LockSettings();
-            SaveSettings();
         }
 
         private void ClassBox_SelectedIndexChanged(object sender, EventArgs e)

@@ -110,14 +110,20 @@ namespace AHK_Builder_Plus_Plus
                         }
 
                         // Generate if chain of doom.
-                        var strings = GenerateAhkColorCheck(FuzzyMatching.Checked);
+                        int fuzzy = 0;
+                        if (FuzzyColorOne.Checked)
+                            fuzzy = 1;
+                        else if (FuzzyColorTwo.Checked)
+                            fuzzy = 2;
+
+                        var strings = GenerateAhkColorCheck(fuzzy);
                         foreach (var line in strings)
                             ahkFile.WriteLine(line);
 
                         ahkFile.WriteLine("	}");
                         ahkFile.WriteLine("return");
 
-                        if (FuzzyMatching.Checked)
+                        if (FuzzyColorOne.Checked || FuzzyColorTwo.Checked)
                         {
                             ahkFile.WriteLine("");
                             ahkFile.WriteLine("Compare(color1, color2, vary=20) {");
@@ -165,7 +171,7 @@ namespace AHK_Builder_Plus_Plus
             }
         }
 
-        private string[] GenerateAhkColorCheck(bool Fuzzy = false)
+        private string[] GenerateAhkColorCheck(int Fuzzy = 0)
         {
             var strings = new List<string>();
 
@@ -174,19 +180,24 @@ namespace AHK_Builder_Plus_Plus
                 var row = AhkTable.Rows[i];
                 if (i == 0)
                 {
-                    if (!Fuzzy)
-                        strings.Add($"	if (CLRa = \"{row.Cells[2].Value}\" and CLRb = \"{row.Cells[3].Value}\") {{ ; {row.Cells[0].Value}");
+                    if (Fuzzy == 1)
+                        strings.Add($"	if (Compare(\"{row.Cells[2].Value}\", CLRa) and CLRb = \"{row.Cells[3].Value}\") {{ ; {row.Cells[0].Value}");
+                    else if (Fuzzy == 2)
+                        strings.Add($"	if (CLRa = \"{row.Cells[2].Value}\" and Compare(\"{row.Cells[3].Value}\", CLRb)) {{ ; {row.Cells[0].Value}");
                     else
-                        strings.Add($"	if (Compare(\"{row.Cells[2].Value}\", CLRa) and Compare(\"{row.Cells[3].Value}\", CLRb)) {{ ; {row.Cells[0].Value}");
+                        strings.Add($"	if (CLRa = \"{row.Cells[2].Value}\" and CLRb = \"{row.Cells[3].Value}\") {{ ; {row.Cells[0].Value}");
 
                     strings.Add($"		Send, {row.Cells[1].Value}");
                 }
                 else
                 {
-                    if (!Fuzzy)
-                        strings.Add($"	}} else if (CLRa = \"{row.Cells[2].Value}\" and CLRb = \"{row.Cells[3].Value}\") {{ ; {row.Cells[0].Value}");
+
+                    if (Fuzzy == 1)
+                        strings.Add($"	}} else if (Compare(\"{row.Cells[2].Value}\", CLRa) and CLRb = \"{row.Cells[3].Value}\") {{ ; {row.Cells[0].Value}");
+                    else if (Fuzzy == 2)
+                        strings.Add($"	}} else if (CLRa = \"{row.Cells[2].Value}\" and Compare(\"{row.Cells[3].Value}\", CLRb)) {{ ; {row.Cells[0].Value}");
                     else
-                        strings.Add($"	}} else if (Compare(\"{row.Cells[2].Value}\", CLRa) and Compare(\"{row.Cells[3].Value}\", CLRb)) {{ ; {row.Cells[0].Value}");
+                        strings.Add($"	}} else if (CLRa = \"{row.Cells[2].Value}\" and CLRb = \"{row.Cells[3].Value}\") {{ ; {row.Cells[0].Value}");
 
                     strings.Add($"		Send, {row.Cells[1].Value}");
                 }

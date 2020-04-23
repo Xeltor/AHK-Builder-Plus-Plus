@@ -21,22 +21,6 @@ namespace AHK_Builder_Plus_Plus
             Properties.Settings.Default.Save();
         }
 
-        internal void LockSettings(bool save = true)
-        {
-            if (save)
-                Properties.Settings.Default.settingsLock = !Properties.Settings.Default.settingsLock;
-
-            foreach (Control ctrl in settingBox.Controls)
-                if (!ctrl.Name.Contains("label"))
-                    ctrl.Enabled = !Properties.Settings.Default.settingsLock;
-
-            lockSettingsButton.Enabled = true;
-            if (Properties.Settings.Default.settingsLock)
-                lockSettingsButton.Text = "Unlock";
-            else
-                lockSettingsButton.Text = "Lock";
-        }
-
         internal void SaveSettings()
         {
             Properties.Settings.Default.xCoordinateOffset = xOffsetBox.Text;
@@ -53,8 +37,6 @@ namespace AHK_Builder_Plus_Plus
             yOffsetBox.Text = Properties.Settings.Default.yCoordinateOffset;
             ovaleScaleBox.Text = Properties.Settings.Default.ovaleScale;
             ahkToggleKeyBox.Text = Properties.Settings.Default.ahkToggleKey;
-            
-            LockSettings(false);
         }
     }
 }
