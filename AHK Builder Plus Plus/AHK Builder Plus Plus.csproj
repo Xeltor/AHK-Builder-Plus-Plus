@@ -76,7 +76,6 @@
     <Compile Include="AhkBuilderPlusPlus.Designer.cs">
       <DependentUpon>AhkBuilderPlusPlus.cs</DependentUpon>
     </Compile>
-    <Compile Include="Functions\WoWConfig.cs" />
     <Compile Include="Functions\XmlFunctions.cs" />
     <Compile Include="FormPartials\FinishFunctions.cs">
       <SubType>Form</SubType>
@@ -90,7 +89,9 @@
     </Compile>
     <Compile Include="Functions\StringFunctions.cs" />
     <Compile Include="Objects\Modifiers.cs" />
-    <Compile Include="Programs\OvaleVisualizer.cs" />
+    <Compile Include="Programs\OvaleVisualizer.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Programs\PixelFinder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

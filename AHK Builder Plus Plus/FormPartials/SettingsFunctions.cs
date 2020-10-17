@@ -8,35 +8,27 @@ namespace AHK_Builder_Plus_Plus
     {
         internal void InitSettings()
         {
-            retry:
-            var result = wowBrowserDialog.ShowDialog();
-
-            if (result != DialogResult.OK)
-                Environment.Exit(42);
-
-            if (!File.Exists(Path.Combine(wowBrowserDialog.SelectedPath, @"Wow.exe")))
-                goto retry;
-
-            Properties.Settings.Default.wowLocation = wowBrowserDialog.SelectedPath;
             Properties.Settings.Default.Save();
         }
 
         internal void SaveSettings()
         {
-            Properties.Settings.Default.xCoordinateOffset = xOffsetBox.Text;
-            Properties.Settings.Default.yCoordinateOffset = yOffsetBox.Text;
-            Properties.Settings.Default.ovaleScale = ovaleScaleBox.Text;
+            Properties.Settings.Default.BoxCenterHorizontalPosition = BoxCenterHorizontalPosition.Text;
+            Properties.Settings.Default.BoxCenterVerticalPosition = BoxCenterVerticalPosition.Text;
+            Properties.Settings.Default.BoxSizeInPixels = BoxSizeInPixels.Text;
             Properties.Settings.Default.ahkToggleKey = ahkToggleKeyBox.Text;
+            Properties.Settings.Default.CurrentTier = currentTier.Text;
 
             Properties.Settings.Default.Save();
         }
 
         internal void LoadSettings()
         {
-            xOffsetBox.Text = Properties.Settings.Default.xCoordinateOffset;
-            yOffsetBox.Text = Properties.Settings.Default.yCoordinateOffset;
-            ovaleScaleBox.Text = Properties.Settings.Default.ovaleScale;
+            BoxCenterHorizontalPosition.Text = Properties.Settings.Default.BoxCenterHorizontalPosition;
+            BoxCenterVerticalPosition.Text = Properties.Settings.Default.BoxCenterVerticalPosition;
+            BoxSizeInPixels.Text = Properties.Settings.Default.BoxSizeInPixels;
             ahkToggleKeyBox.Text = Properties.Settings.Default.ahkToggleKey;
+            currentTier.Text = Properties.Settings.Default.CurrentTier;
         }
     }
 }

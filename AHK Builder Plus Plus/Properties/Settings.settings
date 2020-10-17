@@ -2,23 +2,20 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AHK_Builder_Plus_Plus.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="xCoordinateOffset" Type="System.String" Scope="User">
+    <Setting Name="BoxCenterHorizontalPosition" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="yCoordinateOffset" Type="System.String" Scope="User">
+    <Setting Name="BoxCenterVerticalPosition" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="wowLocation" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="settingsLock" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="ovaleScale" Type="System.String" Scope="User">
-      <Value Profile="(Default)">100</Value>
+    <Setting Name="BoxSizeInPixels" Type="System.String" Scope="User">
+      <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="ahkToggleKey" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CurrentTier" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

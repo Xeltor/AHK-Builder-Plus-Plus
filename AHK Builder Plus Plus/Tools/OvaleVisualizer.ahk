@@ -3,39 +3,56 @@
 
 OvaleMiddleX = %1%
 OvaleMiddleY = %2%
-PixelLocationOneX = %3%
-PixelLocationOneY = %4%
-PixelLocationTwoX = %5%
-PixelLocationTwoY = %6%
+PixelOneHorizontalOffset = %3%
+PixelOneVerticalOffset = %4%
+PixelTwoHorizontalOffset = %5%
+PixelTwoVerticalOffset = %6%
 OffSet = %7%
-OvaleLeftX := OvaleMiddleX - OffSet
-OvaleUpY := OvaleMiddleY - OffSet
 
 if (%0% < 6)
 {
-	ExitApp
+	Exit
 }
 
-Gui, LineRight:+ToolWindow -Caption +AlwaysOnTop
-Gui, LineRight:Color, red
+RedrawLabel:
+OvaleLeftX := OvaleMiddleX - OffSet
+OvaleUpY := OvaleMiddleY - OffSet
+PixelOneHorizontalPixel := OvaleMiddleX + PixelOneHorizontalOffset
+PixelOneVerticalPixel := OvaleMiddleY + PixelOneVerticalOffset
+PixelTwoHorizontalPixel := OvaleMiddleX + PixelTwoHorizontalOffset
+PixelTwoVerticalPixel := OvaleMiddleY + PixelTwoVerticalOffset
+
+Gui, LineRight:+ToolWindow +E0x20 -Caption +AlwaysOnTop
+Gui, LineRight:Color, 0xcbc0ff
 Gui, LineRight:Show, x%OvaleMiddleX% y%OvaleMiddleY% w%OffSet% h1
 
-Gui, LineDown:+ToolWindow -Caption +AlwaysOnTop
-Gui, LineDown:Color, red
+Gui, LineDown:+ToolWindow +E0x20 -Caption +AlwaysOnTop
+Gui, LineDown:Color, 0xcbc0ff
 Gui, LineDown:Show, x%OvaleMiddleX% y%OvaleMiddleY% w1 h%OffSet%
 
-Gui, LineLeft:+ToolWindow -Caption +AlwaysOnTop
-Gui, LineLeft:Color, red
+Gui, LineLeft:+ToolWindow +E0x20 -Caption +AlwaysOnTop
+Gui, LineLeft:Color, 0xcbc0ff
 Gui, LineLeft:Show, x%OvaleLeftX% y%OvaleMiddleY% w%OffSet% h1
 
-Gui, LineUp:+ToolWindow -Caption +AlwaysOnTop
-Gui, LineUp:Color, red
+Gui, LineUp:+ToolWindow +E0x20 -Caption +AlwaysOnTop
+Gui, LineUp:Color, 0xcbc0ff
 Gui, LineUp:Show, x%OvaleMiddleX% y%OvaleUpY% w1 h%OffSet%
 
-Gui, PxlLocOne:+ToolWindow -Caption +AlwaysOnTop
-Gui, PxlLocOne:Color, 0xFF007F
-Gui, PxlLocOne:Show, x%PixelLocationOneX% y%PixelLocationOneY% w1 h1
+Gui, PxlLocOne:+ToolWindow +E0x20 -Caption +AlwaysOnTop
+Gui, PxlLocOne:Color, 0xcbc0ff
+Gui, PxlLocOne:Show, x%PixelOneHorizontalPixel% y%PixelOneVerticalPixel% w1 h1
 
-Gui, PxlLocTwo:+ToolWindow -Caption +AlwaysOnTop
-Gui, PxlLocTwo:Color, 0xFF007F
-Gui, PxlLocTwo:Show, x%PixelLocationTwoX% y%PixelLocationTwoY% w1 h1
+Gui, PxlLocTwo:+ToolWindow +E0x20 -Caption +AlwaysOnTop
+Gui, PxlLocTwo:Color, 0xcbc0ff
+Gui, PxlLocTwo:Show, x%PixelTwoHorizontalPixel% y%PixelTwoVerticalPixel% w1 h1
+return
+
+^LButton::
+{
+	MouseClick
+	MouseGetPos, OvaleMiddleX, OvaleMiddleY
+
+	FileAppend %OvaleMiddleX%:%OvaleMiddleY%:, *
+
+	Goto, RedrawLabel
+}

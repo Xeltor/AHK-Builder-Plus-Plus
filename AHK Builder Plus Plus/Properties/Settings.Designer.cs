@@ -12,7 +12,7 @@ namespace AHK_Builder_Plus_Plus.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.3.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,60 +26,36 @@ namespace AHK_Builder_Plus_Plus.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string xCoordinateOffset {
+        public string BoxCenterHorizontalPosition {
             get {
-                return ((string)(this["xCoordinateOffset"]));
+                return ((string)(this["BoxCenterHorizontalPosition"]));
             }
             set {
-                this["xCoordinateOffset"] = value;
+                this["BoxCenterHorizontalPosition"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string yCoordinateOffset {
+        public string BoxCenterVerticalPosition {
             get {
-                return ((string)(this["yCoordinateOffset"]));
+                return ((string)(this["BoxCenterVerticalPosition"]));
             }
             set {
-                this["yCoordinateOffset"] = value;
+                this["BoxCenterVerticalPosition"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string wowLocation {
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public string BoxSizeInPixels {
             get {
-                return ((string)(this["wowLocation"]));
+                return ((string)(this["BoxSizeInPixels"]));
             }
             set {
-                this["wowLocation"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool settingsLock {
-            get {
-                return ((bool)(this["settingsLock"]));
-            }
-            set {
-                this["settingsLock"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public string ovaleScale {
-            get {
-                return ((string)(this["ovaleScale"]));
-            }
-            set {
-                this["ovaleScale"] = value;
+                this["BoxSizeInPixels"] = value;
             }
         }
         
@@ -92,6 +68,18 @@ namespace AHK_Builder_Plus_Plus.Properties {
             }
             set {
                 this["ahkToggleKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string CurrentTier {
+            get {
+                return ((string)(this["CurrentTier"]));
+            }
+            set {
+                this["CurrentTier"] = value;
             }
         }
     }

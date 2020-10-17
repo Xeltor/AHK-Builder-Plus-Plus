@@ -6,14 +6,14 @@ namespace AHK_Builder_Plus_Plus.Programs
 {
     internal class PixelFinder
     {
-        private int xCoordinateMain;
-        private int yCoordinateMain;
-        private int xCoordinateAlt;
-        private int yCoordinateAlt;
+        private double xCoordinateMain;
+        private double yCoordinateMain;
+        private double xCoordinateAlt;
+        private double yCoordinateAlt;
 
         public PixelColors pixelColors { get; private set; }
 
-        public PixelFinder(int FirstXCoordinate, int FirstYCoordinate, int SecondXCoordinate, int SecondYCoordinate)
+        public PixelFinder(double FirstXCoordinate, double FirstYCoordinate, double SecondXCoordinate, double SecondYCoordinate)
         {
             xCoordinateMain = FirstXCoordinate;
             yCoordinateMain = FirstYCoordinate;
