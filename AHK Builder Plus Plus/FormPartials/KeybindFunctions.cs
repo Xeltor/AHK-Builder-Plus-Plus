@@ -17,7 +17,7 @@ namespace AHK_Builder_Plus_Plus
 
             try
             {
-                var fileLink = $"https://raw.githubusercontent.com/simulationcraft/simc/shadowlands/profiles/T{currentTier.Text}_Raid.simc";
+                var fileLink = $"https://raw.githubusercontent.com/simulationcraft/simc/dragonflight/profiles/T{currentTier.Text}_Raid.simc";
 
                 string[] specIndex;
                 using (var client = new WebClient())
@@ -46,7 +46,7 @@ namespace AHK_Builder_Plus_Plus
             spellBox.Enabled = false;
             spellBox.Items.Clear();
 
-            var fileLocation = $"https://raw.githubusercontent.com/simulationcraft/simc/shadowlands/profiles/Tier{currentTier.Text}/T{currentTier.Text}_{className.Replace(" ", "_")}.simc";
+            var fileLocation = $"https://raw.githubusercontent.com/simulationcraft/simc/dragonflight/profiles/Tier{currentTier.Text}/T{currentTier.Text}_{className.Replace(" ", "_")}.simc";
 
             try
             {
