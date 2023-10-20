@@ -41,15 +41,6 @@
             this.keybind = new System.Data.DataColumn();
             this.color1 = new System.Data.DataColumn();
             this.color2 = new System.Data.DataColumn();
-            this.settingBox = new System.Windows.Forms.GroupBox();
-            this.BoxSizeInPixels = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.ahkToggleKeyBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.BoxCenterVerticalPosition = new System.Windows.Forms.TextBox();
-            this.BoxCenterHorizontalPosition = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.wowBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.helpTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -66,18 +57,25 @@
             this.generateAhkButton = new System.Windows.Forms.Button();
             this.loadButton = new System.Windows.Forms.Button();
             this.settingsPage = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.BoxCenterHorizontalPosition = new System.Windows.Forms.TextBox();
+            this.BoxCenterVerticalPosition = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ahkToggleKeyBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.BoxSizeInPixels = new System.Windows.Forms.TextBox();
             this.visualizerButton = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.currentTier = new System.Windows.Forms.TextBox();
+            this.settingBox = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.AhkTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ahkDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ahkDataTable)).BeginInit();
-            this.settingBox.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.KeybindPage.SuspendLayout();
             this.keybindBox.SuspendLayout();
             this.finishBox.SuspendLayout();
             this.settingsPage.SuspendLayout();
+            this.settingBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // AhkTable
@@ -162,106 +160,6 @@
             // 
             this.color2.AllowDBNull = false;
             this.color2.ColumnName = "Color #2";
-            // 
-            // settingBox
-            // 
-            this.settingBox.Controls.Add(this.currentTier);
-            this.settingBox.Controls.Add(this.label8);
-            this.settingBox.Controls.Add(this.visualizerButton);
-            this.settingBox.Controls.Add(this.BoxSizeInPixels);
-            this.settingBox.Controls.Add(this.label4);
-            this.settingBox.Controls.Add(this.ahkToggleKeyBox);
-            this.settingBox.Controls.Add(this.label3);
-            this.settingBox.Controls.Add(this.BoxCenterVerticalPosition);
-            this.settingBox.Controls.Add(this.BoxCenterHorizontalPosition);
-            this.settingBox.Controls.Add(this.label2);
-            this.settingBox.Controls.Add(this.label1);
-            this.settingBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingBox.Location = new System.Drawing.Point(3, 3);
-            this.settingBox.Name = "settingBox";
-            this.settingBox.Size = new System.Drawing.Size(693, 150);
-            this.settingBox.TabIndex = 1;
-            this.settingBox.TabStop = false;
-            this.settingBox.Text = "Settings";
-            // 
-            // BoxSizeInPixels
-            // 
-            this.BoxSizeInPixels.Location = new System.Drawing.Point(562, 69);
-            this.BoxSizeInPixels.MaxLength = 3;
-            this.BoxSizeInPixels.Name = "BoxSizeInPixels";
-            this.BoxSizeInPixels.Size = new System.Drawing.Size(122, 20);
-            this.BoxSizeInPixels.TabIndex = 2;
-            this.BoxSizeInPixels.Text = "50";
-            this.BoxSizeInPixels.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OvaleScaleBox_KeyPress);
-            this.BoxSizeInPixels.MouseEnter += new System.EventHandler(this.HelpTip_MouseEnter);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(411, 72);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Box size in pixels:";
-            // 
-            // ahkToggleKeyBox
-            // 
-            this.ahkToggleKeyBox.Location = new System.Drawing.Point(98, 17);
-            this.ahkToggleKeyBox.MaxLength = 32676;
-            this.ahkToggleKeyBox.Name = "ahkToggleKeyBox";
-            this.ahkToggleKeyBox.ReadOnly = true;
-            this.ahkToggleKeyBox.Size = new System.Drawing.Size(122, 20);
-            this.ahkToggleKeyBox.TabIndex = 3;
-            this.ahkToggleKeyBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AhkToggleKeyBox_KeyDown);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Ahk toggle key:";
-            // 
-            // BoxCenterVerticalPosition
-            // 
-            this.BoxCenterVerticalPosition.Location = new System.Drawing.Point(562, 43);
-            this.BoxCenterVerticalPosition.MaxLength = 5;
-            this.BoxCenterVerticalPosition.Name = "BoxCenterVerticalPosition";
-            this.BoxCenterVerticalPosition.Size = new System.Drawing.Size(122, 20);
-            this.BoxCenterVerticalPosition.TabIndex = 1;
-            this.BoxCenterVerticalPosition.Text = "0";
-            this.BoxCenterVerticalPosition.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CoordinateBox_KeyPress);
-            this.BoxCenterVerticalPosition.MouseEnter += new System.EventHandler(this.HelpTip_MouseEnter);
-            // 
-            // BoxCenterHorizontalPosition
-            // 
-            this.BoxCenterHorizontalPosition.Location = new System.Drawing.Point(562, 17);
-            this.BoxCenterHorizontalPosition.MaxLength = 5;
-            this.BoxCenterHorizontalPosition.Name = "BoxCenterHorizontalPosition";
-            this.BoxCenterHorizontalPosition.Size = new System.Drawing.Size(122, 20);
-            this.BoxCenterHorizontalPosition.TabIndex = 0;
-            this.BoxCenterHorizontalPosition.Text = "0";
-            this.BoxCenterHorizontalPosition.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CoordinateBox_KeyPress);
-            this.BoxCenterHorizontalPosition.MouseEnter += new System.EventHandler(this.HelpTip_MouseEnter);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(411, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(137, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Box center vertical position:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(411, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Box center horizonal position:";
             // 
             // wowBrowserDialog
             // 
@@ -433,6 +331,85 @@
             this.settingsPage.Text = "Settings";
             this.settingsPage.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(411, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(145, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Box center horizonal position:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(411, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(137, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Box center vertical position:";
+            // 
+            // BoxCenterHorizontalPosition
+            // 
+            this.BoxCenterHorizontalPosition.Location = new System.Drawing.Point(562, 17);
+            this.BoxCenterHorizontalPosition.MaxLength = 5;
+            this.BoxCenterHorizontalPosition.Name = "BoxCenterHorizontalPosition";
+            this.BoxCenterHorizontalPosition.Size = new System.Drawing.Size(122, 20);
+            this.BoxCenterHorizontalPosition.TabIndex = 0;
+            this.BoxCenterHorizontalPosition.Text = "0";
+            this.BoxCenterHorizontalPosition.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CoordinateBox_KeyPress);
+            this.BoxCenterHorizontalPosition.MouseEnter += new System.EventHandler(this.HelpTip_MouseEnter);
+            // 
+            // BoxCenterVerticalPosition
+            // 
+            this.BoxCenterVerticalPosition.Location = new System.Drawing.Point(562, 43);
+            this.BoxCenterVerticalPosition.MaxLength = 5;
+            this.BoxCenterVerticalPosition.Name = "BoxCenterVerticalPosition";
+            this.BoxCenterVerticalPosition.Size = new System.Drawing.Size(122, 20);
+            this.BoxCenterVerticalPosition.TabIndex = 1;
+            this.BoxCenterVerticalPosition.Text = "0";
+            this.BoxCenterVerticalPosition.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CoordinateBox_KeyPress);
+            this.BoxCenterVerticalPosition.MouseEnter += new System.EventHandler(this.HelpTip_MouseEnter);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Ahk toggle key:";
+            // 
+            // ahkToggleKeyBox
+            // 
+            this.ahkToggleKeyBox.Location = new System.Drawing.Point(98, 17);
+            this.ahkToggleKeyBox.MaxLength = 32676;
+            this.ahkToggleKeyBox.Name = "ahkToggleKeyBox";
+            this.ahkToggleKeyBox.ReadOnly = true;
+            this.ahkToggleKeyBox.Size = new System.Drawing.Size(251, 20);
+            this.ahkToggleKeyBox.TabIndex = 3;
+            this.ahkToggleKeyBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AhkToggleKeyBox_KeyDown);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(411, 72);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Box size in pixels:";
+            // 
+            // BoxSizeInPixels
+            // 
+            this.BoxSizeInPixels.Location = new System.Drawing.Point(562, 69);
+            this.BoxSizeInPixels.MaxLength = 3;
+            this.BoxSizeInPixels.Name = "BoxSizeInPixels";
+            this.BoxSizeInPixels.Size = new System.Drawing.Size(122, 20);
+            this.BoxSizeInPixels.TabIndex = 2;
+            this.BoxSizeInPixels.Text = "50";
+            this.BoxSizeInPixels.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OvaleScaleBox_KeyPress);
+            this.BoxSizeInPixels.MouseEnter += new System.EventHandler(this.HelpTip_MouseEnter);
+            // 
             // visualizerButton
             // 
             this.visualizerButton.Location = new System.Drawing.Point(562, 94);
@@ -444,25 +421,24 @@
             this.visualizerButton.UseVisualStyleBackColor = true;
             this.visualizerButton.Click += new System.EventHandler(this.VisualizerButton_Click);
             // 
-            // label8
+            // settingBox
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 46);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 13);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Current simc tier:";
-            // 
-            // currentTier
-            // 
-            this.currentTier.Location = new System.Drawing.Point(98, 43);
-            this.currentTier.MaxLength = 5;
-            this.currentTier.Name = "currentTier";
-            this.currentTier.Size = new System.Drawing.Size(122, 20);
-            this.currentTier.TabIndex = 10;
-            this.currentTier.Text = "0";
-            this.currentTier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CoordinateBox_KeyPress);
-            this.currentTier.Leave += new System.EventHandler(this.currentTier_Leave);
+            this.settingBox.Controls.Add(this.visualizerButton);
+            this.settingBox.Controls.Add(this.BoxSizeInPixels);
+            this.settingBox.Controls.Add(this.label4);
+            this.settingBox.Controls.Add(this.ahkToggleKeyBox);
+            this.settingBox.Controls.Add(this.label3);
+            this.settingBox.Controls.Add(this.BoxCenterVerticalPosition);
+            this.settingBox.Controls.Add(this.BoxCenterHorizontalPosition);
+            this.settingBox.Controls.Add(this.label2);
+            this.settingBox.Controls.Add(this.label1);
+            this.settingBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingBox.Location = new System.Drawing.Point(3, 3);
+            this.settingBox.Name = "settingBox";
+            this.settingBox.Size = new System.Drawing.Size(693, 150);
+            this.settingBox.TabIndex = 1;
+            this.settingBox.TabStop = false;
+            this.settingBox.Text = "Settings";
             // 
             // AhkBuilderPlusPlus
             // 
@@ -482,29 +458,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.AhkTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ahkDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ahkDataTable)).EndInit();
-            this.settingBox.ResumeLayout(false);
-            this.settingBox.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.KeybindPage.ResumeLayout(false);
             this.keybindBox.ResumeLayout(false);
             this.keybindBox.PerformLayout();
             this.finishBox.ResumeLayout(false);
             this.settingsPage.ResumeLayout(false);
+            this.settingBox.ResumeLayout(false);
+            this.settingBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.DataGridView AhkTable;
-        private System.Windows.Forms.GroupBox settingBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox BoxCenterHorizontalPosition;
-        private System.Windows.Forms.TextBox BoxCenterVerticalPosition;
-        private System.Windows.Forms.TextBox ahkToggleKeyBox;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox BoxSizeInPixels;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.FolderBrowserDialog wowBrowserDialog;
         private System.Data.DataSet ahkDataSet;
         private System.Data.DataTable ahkDataTable;
@@ -531,9 +498,16 @@
         private System.Windows.Forms.Button generateAhkButton;
         private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.TabPage settingsPage;
+        private System.Windows.Forms.GroupBox settingBox;
         private System.Windows.Forms.Button visualizerButton;
-        private System.Windows.Forms.TextBox currentTier;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox BoxSizeInPixels;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox ahkToggleKeyBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox BoxCenterVerticalPosition;
+        private System.Windows.Forms.TextBox BoxCenterHorizontalPosition;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
 

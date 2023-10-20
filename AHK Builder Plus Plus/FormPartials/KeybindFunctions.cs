@@ -54,7 +54,9 @@ namespace AHK_Builder_Plus_Plus
                 using (var client = new WebClient())
                 using (var reader = new StreamReader(client.OpenRead(fileLocation)))
                 {
-                    spellList = reader.ReadToEnd().Replace("\n", Environment.NewLine).Split(new[] { Environment.NewLine }, StringSplitOptions.None)
+                    spellList = reader.ReadToEnd()
+                                      .Replace("\n", Environment.NewLine)
+                                      .Split(new[] { Environment.NewLine }, StringSplitOptions.None)
                                       .Where(x => x.StartsWith("actions") && !(x.Contains("call_action") || x.Contains("run_action") || x.Contains("variable,") || x.Contains("use_items") || x.Contains("snapshot_stats")))
                                       .Select(x => GetRegexMatch(x).Replace("_", " "))
                                       .Where(x => !(string.IsNullOrEmpty(x) || x.Contains("use item")))

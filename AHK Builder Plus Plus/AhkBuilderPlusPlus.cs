@@ -32,7 +32,11 @@ namespace AHK_Builder_Plus_Plus
             Activate();
 
             // First time setup?
-            if (BoxCenterHorizontalPosition.Text == "0" || BoxCenterVerticalPosition.Text == "0" || currentTier.Text == "0" || string.IsNullOrEmpty(ahkToggleKeyBox.Text))
+            if (
+                BoxCenterHorizontalPosition.Text == "0" || 
+                BoxCenterVerticalPosition.Text == "0" || 
+                string.IsNullOrEmpty(ahkToggleKeyBox.Text)
+                )
             {
                 tabControl1.SelectTab(1);
             }

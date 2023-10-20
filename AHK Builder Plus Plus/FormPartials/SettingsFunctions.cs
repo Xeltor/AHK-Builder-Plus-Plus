@@ -17,7 +17,6 @@ namespace AHK_Builder_Plus_Plus
             Properties.Settings.Default.BoxCenterVerticalPosition = BoxCenterVerticalPosition.Text;
             Properties.Settings.Default.BoxSizeInPixels = BoxSizeInPixels.Text;
             Properties.Settings.Default.ahkToggleKey = ahkToggleKeyBox.Text;
-            Properties.Settings.Default.CurrentTier = currentTier.Text;
 
             Properties.Settings.Default.Save();
         }
@@ -28,7 +27,6 @@ namespace AHK_Builder_Plus_Plus
             BoxCenterVerticalPosition.Text = Properties.Settings.Default.BoxCenterVerticalPosition;
             BoxSizeInPixels.Text = Properties.Settings.Default.BoxSizeInPixels;
             ahkToggleKeyBox.Text = Properties.Settings.Default.ahkToggleKey;
-            currentTier.Text = Properties.Settings.Default.CurrentTier;
         }
     }
 }
